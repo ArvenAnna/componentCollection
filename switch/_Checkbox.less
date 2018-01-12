@@ -1,0 +1,277 @@
+/**
+ * A checkbox allows the user to make a binary choice.
+ */
+
+:root {
+  --Checkbox__label-font-size: var(--font-size--regular);
+  --Checkbox__label-padding: var(--space-size--sm);
+  --Checkbox--custom__label-padding: 1.75rem;
+
+  --Checkbox__before-border-color: var(--border-color--default);
+  --Checkbox__before-border-width: 2px;
+  --Checkbox__before-border-style: var(--border-style--default);
+  --Checkbox__before-border-radius: var(--border-radius--default);
+  --Checkbox__before-background-color: var(--background-color--default);
+  --Checkbox__before-height: 1.125rem;
+
+  --Checkbox--hover__border-color: var(--border-color--forState);
+
+  --Checkbox--focus__before-box-shadow-color: var(--shadow-color--focus);
+  --Checkbox--focus__before-box-shadow-width: var(--shadow-size--forState);
+
+  --Checkbox--checked__before-background-color: var(--background-color--brand);
+  --Checkbox--checked__before-border-color: var(--border-color--primary);
+
+  --Checkbox--disabled-opacity: var(--opacity--disabled);
+
+  --Switch-width: 3rem;
+  --Switch-height: ~'calc(var(--Switch-width) / 2)';
+  --Switch__label-padding: 3.625rem;
+  --Switch__before-background-color: var(--Checkbox__before-border-color);
+  --Switch__after-background-color: var(--background-color--default);
+  --Switch__after-border-width: var(--border-width--default);
+  --Switch__after-border-style: var(--border-style--default);
+  --Switch__after-border-color: var(--Switch__before-background-color);
+
+  --Switch--focus__after-box-shadow-color: var(--shadow-color--focus);
+  --Switch--focus__after-box-shadow-width: var(--shadow-size--forState);
+
+  --Switch--hover__after-box-shadow-width: var(--shadow-size--2);
+  --Switch--hover__after-box-shadow-color: var(--shadow-color--secondary);
+
+  --Switch--checked__before-background-color: var(--color-brand);
+  --Switch--checked__after-border-color: var(--Switch--checked__before-background-color);
+
+}
+
+.Checkbox {
+  position: relative;
+  display: block;
+  font-size: 0;
+  cursor: pointer;
+
+  box-sizing: border-box;
+}
+
+/**
+ * 1. Fix vertical alignment on IE 8.
+ */
+
+.Checkbox__label {
+  position: relative;
+  display: inline-block;
+  font-size: var(--Checkbox__label-font-size);
+  line-height: 2;
+  padding-left: var(--Checkbox__label-padding);
+
+  vertical-align: 2px; /* 1 */
+}
+
+[dir=rtl] .Checkbox__label {
+  padding-left: 0;
+  padding-right: var(--Checkbox__label-padding);
+}
+
+.Checkbox:nth-of-type(1n) {
+  /*
+   * This is the tick in the checkbox
+   */
+  > input[type="checkbox"]:hover ~ .Checkbox__label:before {
+    border-color: var(--Checkbox--hover__border-color);
+  }
+
+  > input[type="checkbox"]:focus:not(:active) ~ .Checkbox__label:before {
+    box-shadow: var(--Checkbox--focus__before-box-shadow-width) var(--Checkbox--focus__before-box-shadow-color);
+    outline: 0;
+  }
+
+  > input[type="checkbox"]:checked ~ .Checkbox__label:before {
+    border-color: var(--Checkbox--checked__before-border-color);
+    background: var(--Checkbox--checked__before-background-color) url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio%3D%22xMinYMin%20meet%22 %3E%3Cpath d='M.04.627L.146.52.43.805.322.91zm.177.177L.854.167.96.273.323.91z' fill='%23fff'/%3E%3C/svg%3E");
+  }
+
+  /**
+   * Hide the default radio on modern browsers (IE 9+)
+   */
+  > [type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+.Checkbox__label:nth-of-type(1n) {
+  padding-left: var(--Checkbox--custom__label-padding);
+
+  /*
+   * This is the border around the checkbox
+   */
+  &:before {
+    content: " ";
+
+    box-sizing: border-box;
+
+    position: absolute;
+
+    border: var(--Checkbox__before-border-width) var(--Checkbox__before-border-style) var(--Checkbox__before-border-color);
+    border-radius: var(--Checkbox__before-border-radius);
+    width: 1.125rem;
+    height: var(--Checkbox__before-height);
+    background: var(--Checkbox__before-background-color);
+    display: inline-block;
+    vertical-align: middle;
+
+    top: 50%;
+    left: 0;
+    margin-top: ~'calc(( var(--Checkbox__before-height) / 2) * -1)';
+
+    transition: background 0.35s;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+}
+
+[dir=rtl] .Checkbox__label:nth-of-type(1n) {
+  padding-left: 0;
+  padding-right: var(--Checkbox--custom__label-padding);
+
+  &:before {
+    left: auto;
+    right: 0;
+  }
+}
+
+/* Variants
+   ========================================================================== */
+
+.Checkbox--switch:nth-of-type(1n) {
+  /* height: 2rem; */
+
+  .Checkbox__label {
+    padding-left: var(--Switch__label-padding);
+
+    &:before,
+    &:after {
+      content: " ";
+      position: absolute;
+      left: 0;
+      top: 50%;
+
+      transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    &:after {
+      background: var(--Switch__after-background-color);
+      border: var(--Switch__after-border-width) var(--Switch__after-border-style) var(--Switch__after-border-color);
+      box-shadow: none;
+
+      margin-top: ~'calc((var(--Switch-height) / 2) * -1)';
+      height: var(--Switch-height);
+      width: ~'calc(var(--Switch-width) / 2)';
+      border-radius: 50%;
+      text-align: center;
+      cursor: inherit;
+
+      transition: left 0.35s, right 0.35s;
+    }
+
+    &:before {
+      background: var(--Switch__before-background-color);
+      border-radius: 10rem;
+      border-width: 0;
+
+      width: var(--Switch-width);
+      height: var(--Switch-height);
+
+      margin-top: ~'calc((var(--Switch-height) / 2) * -1)';
+
+      transition: background 0.35s;
+    }
+  }
+
+  > input[type="checkbox"]:hover ~ .Checkbox__label:after {
+    box-shadow: var(--Switch--hover__after-box-shadow-width) var(--Switch--hover__after-box-shadow-color);
+  }
+
+  > input[type="checkbox"]:hover ~ .Checkbox__label:before {
+    border-width: 0;
+  }
+
+  > input[type="checkbox"]:focus ~ .Checkbox__label:before {
+    box-shadow: none;
+  }
+
+  > input[type="checkbox"]:focus:not(:active) ~ .Checkbox__label:after {
+    box-shadow: var(--Switch--focus__after-box-shadow-width) var(--Switch--focus__after-box-shadow-color);
+    outline: 0;
+  }
+
+  > input[type="checkbox"]:checked ~ .Checkbox__label:before {
+    background: var(--Switch--checked__before-background-color);
+  }
+
+  > input[type="checkbox"]:checked ~ .Checkbox__label:after {
+    left: ~'calc(var(--Switch-width) / 2)';
+  }
+}
+
+[dir="rtl"] .Checkbox--switch:nth-of-type(1n) {
+  .Checkbox__label {
+    padding-left: 0;
+    padding-right: var(--Switch__label-padding);
+  }
+
+  .Checkbox__label:before,
+  .Checkbox__label:after {
+    left: auto;
+    right: 0;
+  }
+
+  > input[type="checkbox"]:checked ~ .Checkbox__label:after {
+    right: ~'calc(var(--Switch-width) / 2)';
+  }
+}
+
+/* States
+   ========================================================================== */
+
+.Checkbox > [type="checkbox"][disabled] ~ .Checkbox__label {
+  opacity: var(--Checkbox--disabled-opacity);
+}
+
+.Checkbox > [type="checkbox"][disabled],
+.Checkbox > [type="checkbox"][disabled] ~ .Checkbox__label {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.Checkbox:nth-of-type(1n) > [type="checkbox"][disabled]:hover ~ .Checkbox__label:before {
+  border-color: var(--Checkbox__before-border-color);
+}
+
+.Checkbox:nth-of-type(1n) > [type="checkbox"][disabled]:active ~ .Checkbox__label:before,
+.Checkbox:nth-of-type(1n) > [type="checkbox"][disabled]:focus ~ .Checkbox__label:before {
+  outline: 0;
+}
+
+.Checkbox--switch:nth-of-type(1n) > input[type="checkbox"][disabled]:hover ~ .Checkbox__label:after {
+  box-shadow: none;
+}
+
+/*
+ * Special behaviour
+ */
+
+// If a checkbox is used in a menu,
+// it must have the same size as other items
+.Menu__item .Checkbox__label {
+  margin: -0.5em 0;
+
+  .Menu--small & {
+    margin: -0.3em 0;
+    font-size: var(--Menu--small__item-font-size);
+  }
+
+  .Menu--large & {
+    font-size: var(--Menu--large__item-font-size);
+  }
+}
