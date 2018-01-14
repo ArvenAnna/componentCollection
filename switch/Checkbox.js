@@ -4,23 +4,21 @@ import './_Checkbox.less';
 
 export default class Checkbox extends React.Component {
 
-    //public static displayName = "Checkbox";
-
     constructor(props) {
         super(props);
 
         this.handleChange = this.handleChange.bind(this);
     }
 
-    // public static propTypes = {//
-    //     "name": PropTypes.string, //
-    //     "defaultChecked": PropTypes.bool, //
-    //     "checked": PropTypes.bool, //
-    //     "onChange": PropTypes.func, //
-    //     "disabled": PropTypes.bool, //
-    //     "className": PropTypes.string, //
-    //     "isSwitch": PropTypes.bool //
-    // };
+    static propTypes = {
+        "name": PropTypes.string,
+        "defaultChecked": PropTypes.bool,
+        "checked": PropTypes.bool,
+        "onChange": PropTypes.func,
+        "disabled": PropTypes.bool,
+        "className": PropTypes.string,
+        "isSwitch": PropTypes.bool
+    }
 
     toCamelCase(str) {
         if (!str) {

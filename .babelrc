@@ -1,6 +1,7 @@
 {
-  "presets": ["es2017", "react", "stage-2"],
+  "presets": ["es2017", "react", "stage-2", "stage-1", "stage-0"],
   "plugins": [
-    "babel-plugin-transform-decorators-legacy"
+    "babel-plugin-transform-decorators-legacy",
+    "transform-class-properties"
   ]
 }

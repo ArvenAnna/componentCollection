@@ -5,10 +5,40 @@
   .menu {
       float: left;
       width: 20%;
+      border: 1px solid black;
+      padding: 2rem;
+      box-sizing: border-box;
+
+    a {
+      display: block;
+      text-decoration: none;
+    }
+
+    .active {
+      color: red;
+    }
   }
 
   .content {
     float: right;
-    width: 70%;
+    width: 75%;
+    border: 1px solid black;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+
+  .element_block_container {
+      display: flex;
+      flex-direction: row;
+  }
+
+  .element_block {
+    border: 1px solid black;
+    padding: 0.5rem;
+    margin: 3px;
+  }
+
+  .crypto_bg {
+    background-color: black;
   }
 }
