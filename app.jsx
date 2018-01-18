@@ -18,6 +18,7 @@ import Dialogs from './dialogs';
 import Cards from './cards';
 import Notifications from './notifications';
 import Tables from './table';
+import MainPage from './MainPage';
 
 import {ThemeProvider} from "styled-components";
 import * as theme from './theme';
@@ -27,7 +28,7 @@ ReactDOM.render(
     <ThemeProvider theme={theme}>
       <HashRouter>
           <div className="root">
-              <div className="menu">
+              <div className="main_menu">
                   <NavLink to="/switch">Switch</NavLink>
                   <NavLink to="/tabs">Tabs</NavLink>
                   <NavLink to="/textfields">TextFields</NavLink>
@@ -41,7 +42,7 @@ ReactDOM.render(
               </div>
               <div className="content">
                   <Switch>
-                      {/*<Route exact path='/' component={AlbumContainer}/>*/}
+                      <Route exact path='/' component={MainPage}/>
                       <Route path='/switch' component={Switchers}/>
                       <Route path='/tabs' component={Tabs}/>
                       <Route path='/textfields' component={TextFields}/>
