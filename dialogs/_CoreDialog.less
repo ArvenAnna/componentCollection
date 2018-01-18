@@ -1,0 +1,105 @@
+/**
+* DIALOG
+*/
+
+:root {
+    --Dialog__backdrop-background-color: rgba(0, 0, 0, 0.75);
+
+    --Dialog__container-background-color: var(--Background-color-lightest);
+    --Dialog__container-box-shadow: rgba(233, 239, 243, 0.75);
+    --Dialog__container-border-color: #e3e8ec;
+    --Dialog__container-border-radius: 2px;
+
+    --Dialog__header-border-color: #e3e8ec;
+    --Dialog__header-padding: 0.75em 1em;
+
+    --Dialog__footer-border-color: #e3e8ec;
+    --Dialog__footer-padding: 0.75em 1em;
+
+    --Dialog__content-padding: 0.75em 1em;
+
+    --Dialog-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    --Dialog-z-index: var(--z-index--Dialog);
+}
+
+.Dialog {
+    position: fixed;
+    display: none;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    z-index: var(--Dialog-z-index);
+}
+
+.Dialog.has-backdrop {
+    background: var(--Dialog__backdrop-background-color);
+}
+
+.Dialog.is-open {
+    display: block;
+}
+
+.Dialog__container {
+    position: relative;
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 4rem;
+    max-width: 100%;
+    background: var(--Dialog__container-background-color);
+    border: 1px solid var(--Dialog__container-border-color);
+    box-shadow: 0 0 1px 1px var(--Dialog__container-box-shadow);
+    border-radius: var(--Dialog__container-border-radius);
+
+    overflow: hidden;
+
+    vertical-align: top;
+
+    -webkit-tap-highlight-color: var(--Dialog-webkit-tap-highlight-color);
+
+    transition: transform 0.35s;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.Dialog__header {
+    position: relative;
+    padding: var(--Dialog__header-padding);
+
+    border-bottom: 1px solid var(--Dialog__header-border-color);
+}
+
+.Dialog__footer {
+    position: relative;
+    padding: var(--Dialog__footer-padding);
+
+    border-top: 1px solid var(--Dialog__footer-border-color);
+}
+
+.Dialog__content {
+    position: relative;
+    padding: var(--Dialog__content-padding);
+}
+
+.Dialog__actions {
+    text-align: right;
+}
+
+[dir=rtl] .Dialog__actions {
+    text-align: left;
+}
+
+.Dialog__close {
+    z-index: 9;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    cursor: pointer;
+}
+
+[dir=rtl] .Dialog__close {
+    right: auto;
+    left: 1em;
+}

@@ -1,0 +1,22 @@
+:root {
+    --Caret-margin: var(--space-size--md);
+    --Caret-size: 0.375rem;
+    --Caret-color: var(--text-color--default);
+}
+
+.Caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: var(--Caret-margin);
+    vertical-align: middle;
+    border-top: var(--Caret-size) solid var(--Caret-color);
+    border-right: var(--Caret-size) solid transparent;
+    border-left: var(--Caret-size) solid transparent;
+    border-bottom: 0 dotted;
+}
+
+[dir=rtl] .Caret {
+    margin-left: 0;
+    margin-right: var(--Caret-margin);
+}

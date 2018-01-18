@@ -30,15 +30,24 @@
   .element_block_container {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
   }
 
   .element_block {
     border: 1px solid black;
     padding: 0.5rem;
     margin: 3px;
+
+    &.core_margin {
+      &>div{
+        margin: 5px;
+      }
+    }
   }
 
   .crypto_bg {
     background-color: black;
   }
+
+
 }

@@ -1,0 +1,131 @@
+/**
+* DROPDOWN
+*/
+
+:root {
+    --Dropdown-text-color: var(--text-color--default);
+
+    --Dropdown-font-size: var(--font-size--regular);
+    --Dropdown--small-font-size: var(--font-size--regular);
+    --Dropdown--large-font-size: var(--font-size--large);
+
+    --Dropdown--disabled-border-color: var(--border-color--disabled);
+    --Dropdown--disabled-background-color: var(--background-color--disabled);
+    --Dropdown--disabled-text-color: var(--text-color--disabled);
+    --Dropdown--disabled-opacity: var(--opacity--disabled);
+
+    --Dropdown__trigger-text-color: inherit;
+    --Dropdown__trigger-font-size: var(--font-size--regular);
+    --Dropdown--small__trigger-font-size: var(--font-size--regular);
+    --Dropdown--large__trigger-font-size: var(--font-size--large);
+
+    --Dropdown-z-index: var(--z-index--Dropdown);
+}
+
+.Dropdown {
+    position: relative;
+    white-space: nowrap;
+    font-size: var(--Dropdown-font-size);
+    color: var(--Dropdown-text-color);
+    line-height: 1;
+
+    &.is-disabled,
+    &[disabled] {
+        cursor: default /* no-drop */;
+        opacity: var(--Dropdown--disabled-opacity);
+        pointer-events: none;
+        box-shadow: none;
+    }
+
+    &:focus {
+        outline: 0;
+    }
+
+    &--block {
+        width: 100%;
+    }
+
+    &--small {
+        font-size: var(--Dropdown--small-font-size);
+    }
+
+    &--large {
+        font-size: var(--Dropdown--large-font-size);
+    }
+}
+
+/**
+* DROPDOWN TRIGGER
+*/
+.Dropdown__trigger {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    white-space: normal;
+    font-size: var(--Dropdown__trigger-font-size);
+}
+
+.Dropdown--small .Dropdown__trigger {
+    font-size: var(--Dropdown--small__trigger-font-size);
+}
+
+.Dropdown--large .Dropdown__trigger {
+    font-size: var(--Dropdown--large__trigger-font-size);
+}
+
+.Dropdown--block .Dropdown__trigger {
+    width: 100%;
+}
+
+.Dropdown.is-disabled .Dropdown__trigger,
+.Dropdown[disabled] .Dropdown__trigger {
+    opacity: var(--Dropdown--disabled-opacity);
+}
+
+/**
+* CARET
+*/
+.Dropdown--dropup .Dropdown__trigger .Caret {
+    transform: rotate(180deg);
+}
+
+/**
+ * Dropdown menu
+ */
+.Dropdown__popper {
+    position: absolute;
+    z-index: var(--Dropdown-z-index);
+}
+
+// A popper staying inside the main component
+// (not moved to document root) should be hidden by default
+.Dropdown .Dropdown__popper {
+    display: none;
+}
+
+// In legacy mode, this can be hidden
+.Dropdown--legacy .Dropdown__popper {
+    display: none;
+    left: 0;
+    *top: 100%;
+}
+
+/* IE9 Specific, other browsers use Popper to place the dropdown */
+.Dropdown--legacy.Dropdown--dropup .Dropdown__popper {
+    top: auto;
+    bottom: 100%;
+}
+
+[dir=rtl] .Dropdown__popper {
+    left: auto;
+    right: 0;
+}
+
+.Dropdown.is-open > .Dropdown__popper {
+    display: block;
+}
+
+.Dropdown.is-disabled > .Dropdown__popper {
+    display: none;
+}

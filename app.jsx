@@ -12,6 +12,12 @@ import Switchers from "./switch";
 import Tabs from "./tabs";
 import TextFields from './textFields';
 import Buttons from './buttons';
+import Indicators from './indicators';
+import Tooltips from './tooltips';
+import Dialogs from './dialogs';
+import Cards from './cards';
+import Notifications from './notifications';
+import Tables from './table';
 
 import {ThemeProvider} from "styled-components";
 import * as theme from './theme';
@@ -26,7 +32,12 @@ ReactDOM.render(
                   <NavLink to="/tabs">Tabs</NavLink>
                   <NavLink to="/textfields">TextFields</NavLink>
                   <NavLink to="/buttons">Buttons</NavLink>
-
+                  <NavLink to="/indicators">Indicators</NavLink>
+                  <NavLink to="/tooltips">Tooltips</NavLink>
+                  <NavLink to="/dialogs">Dialogs</NavLink>
+                  <NavLink to="/cards">Cards</NavLink>
+                  <NavLink to="/notifications">Notifications</NavLink>
+                  <NavLink to="/tables">Tables</NavLink>
               </div>
               <div className="content">
                   <Switch>
@@ -35,6 +46,12 @@ ReactDOM.render(
                       <Route path='/tabs' component={Tabs}/>
                       <Route path='/textfields' component={TextFields}/>
                       <Route path='/buttons' component={Buttons}/>
+                      <Route path='/indicators' component={Indicators}/>
+                      <Route path='/tooltips' component={Tooltips}/>
+                      <Route path='/dialogs' component={Dialogs}/>
+                      <Route path='/cards' component={Cards}/>
+                      <Route path='/notifications' component={Notifications}/>
+                      <Route path='/tables' component={Tables}/>
 
                   </Switch>
               </div>

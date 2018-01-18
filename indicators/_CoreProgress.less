@@ -1,0 +1,91 @@
+:root {
+    --Progress-background-color: var(--Background-color-main);
+    --Progress-border-color: var(--Background-color-dark);
+    --Progress__value-background-color: var(--Background-color-dark);
+
+    //--Progress--info-background-color: lighten(var(--Info-color), 90%);
+    //--Progress--info-border-color: color(var(--Info-color) shade(5%));
+
+    --Progress--info-background-color: lighten(#00b4e5, 90%);
+    --Progress--info-border-color: shade(#00b4e5, 5%);
+    --Progress__value--info-background-color: var(--Info-color);
+
+    //--Progress--success-background-color: color(var(--Success-color) l(90%));
+    //--Progress--success-border-color: color(var(--Success-color) shade(5%));
+
+    --Progress--success-background-color: lighten(#8cc149, 90%);
+    --Progress--success-border-color: shade(#8cc149, 5%);
+    --Progress__value--success-background-color: var(--Success-color);
+
+    //--Progress--warning-background-color: color(var(--Warning-color) l(90%));
+    //--Progress--warning-border-color: color(var(--Warning-color) shade(5%));
+    --Progress--warning-background-color: lighten(#f1c40f, 90%);
+    --Progress--warning-border-color: shade(#f1c40f, 5%);
+    --Progress__value--warning-background-color: var(--Warning-color);
+
+    //--Progress--error-background-color: color(var(--Error-color) l(90%));
+    //--Progress--error-border-color: color(var(--Error-color) shade(5%));
+    --Progress--error-background-color: lighten(#e95a4b, 90%);
+    --Progress--error-border-color: shade(#e95a4b, 5%);
+    --Progress__value--error-background-color: var(--Error-color);
+}
+
+.Progress {
+    display: block;
+    width: 100%;
+    padding: 2px;
+    background: var(--Progress-background-color);
+    border: 1px solid var(--Progress-border-color);
+    border-radius: 2px;
+}
+
+.Progress__value {
+    display: inline-block;
+    text-align: center;
+    line-height: 2;
+    font-weight: bold;
+    color: #fff;
+    background: var(--Progress__value-background-color);
+    border-radius: 2px;
+}
+
+.Progress__text {
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+.Progress--info {
+    background: var(--Progress--info-background-color);
+    border: 1px solid var(--Progress--info-border-color);
+
+    .Progress__value {
+        background: var(--Progress__value--info-background-color);
+    }
+}
+
+.Progress--success {
+    background: var(--Progress--success-background-color);
+    border: 1px solid var(--Progress--success-border-color);
+
+    .Progress__value {
+        background: var(--Progress__value--success-background-color);
+    }
+}
+
+.Progress--warning {
+    background: var(--Progress--warning-background-color);
+    border: 1px solid var(--Progress--warning-border-color);
+
+    .Progress__value {
+        background: var(--Progress__value--warning-background-color);
+    }
+}
+
+.Progress--error {
+    background: var(--Progress--error-background-color);
+    border: 1px solid var(--Progress--error-border-color);
+
+    .Progress__value {
+        background: var(--Progress__value--error-background-color);
+    }
+}

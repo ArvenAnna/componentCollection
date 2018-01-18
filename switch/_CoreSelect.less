@@ -1,0 +1,449 @@
+/** @define Select */
+
+/**
+ * A select component styled using pseudo elements to
+ * make it visually consistent in all modern browsers.
+ *
+ * Loosely based on SUIT CSS - https://github.com/suitcss/components-button
+ */
+
+/**
+ * TODO:
+ *
+ * 1. Improve `is-disabled` state
+ *     (don't depend on pointer-events nor pseudo-classes like `:not`).
+ * 2. Improve `is-active` state on older IE versions (IE < 9).
+ * 3. Improve `is-loading` state on older IE versions
+ *     (use an animated gif for old browswers).
+ */
+
+:root {
+
+    --Select-background-color: var(--background-color--default);
+    --Select-border-radius: var(--border-radius--default);
+    --Select-border-width: var(--border-width--default);
+    --Select-border-style: var(--border-style--default);
+    --Select-border-color: var(--border-color--default);
+
+    --Select-font-size: var(--font-size--regular);
+    --Select-text-color: var(--text-color--default);
+
+    --Select-padding-top: var(--space-size--sm);
+    --Select-padding-right: var(--space-size--xl);
+    --Select-padding-bottom: var(--space-size--sm);
+    --Select-padding-left: var(--space-size--sm);
+
+    --Select__caret-text-color: var(--Select-text-color);
+    --Select__caret-font-size: var(--font-size--large);
+    --Select__caret-right: var(--space-size--sm);
+
+    --Select--hover-border-color: var(--border-color--forState);
+
+    --Select--focus-box-shadow-color: var(--shadow-color--focus);
+    --Select--focus-box-shadow-width: var(--shadow-size--forState);
+
+    --Select--disabled-border-color: var(--border-color--disabled);
+    --Select--disabled-background-color: var(--background-color--disabled);
+    --Select--disabled-text-color: var(--text-color--disabled);
+    --Select--disabled-opacity: var(--opacity--disabled);
+    --Select--disabled-color: rgba(50, 50, 50, 0.5);
+
+    --Select--loading__text-color: var(--Select-text-color);
+    --Select--loading__before-border-width: var(--border-width--default);
+    --Select--loading__before-border-style: var(--border-style--default);
+    --Select--loading__before-border-color: currentColor;
+    --Select--loading__before-size: 1.125rem;
+    --Select--loading__before-right: 0.75rem;
+    --Select--small--loading__before-size: 1rem;
+    --Select--large--loading__before-size: 1.5rem;
+
+    --Select--small-font-size: var(--font-size--regular);
+    --Select--small-padding-top: var(--space-size--xs);
+    --Select--small-padding-right: 1rem;
+    --Select--small-padding-bottom: var(--space-size--xs);
+    --Select--small-padding-left: var(--space-size--sm);
+
+    --Select--large-font-size: var(--font-size--large);
+    --Select--large-padding-top: 0.875rem;
+    --Select--large-padding-right: 3rem;
+    --Select--large-padding-bottom: 0.875rem;
+    --Select--large-padding-left: var(--space-size--md);
+
+    --Select-webkit-tap-highlight-color: var(--background-color--transparent);
+    --Select-ms-value-color: var(--text-color--default);
+    --Select-ms-value-background-color: var(--background-color--transparent);
+    --Select-moz-focusring: var(--Background-color-none);
+}
+
+.Select {
+    position: relative;
+
+    display: block;
+
+    background: var(--Select-background-color);
+    border-radius: var(--Select-border-radius);
+
+    font-size: var(--Select-font-size);
+}
+
+.Select select {
+    border-radius: var(--Select-border-radius);
+    appearance: none;
+    box-sizing: border-box;
+
+    display: block;
+
+    padding: var(--Select-padding-top) var(--Select-padding-right) var(--Select-padding-bottom) var(--Select-padding-left);
+    background: inherit;
+    color: var(--Select-text-color);
+    border: var(--Select-border-width) var(--Select-border-style) var(--Select-border-color);
+
+    line-height: 1;
+    font-size: inherit;
+    font-weight: 400;
+    vertical-align: middle;
+
+    transition: border-color 0.35s, background-color 0.35s, color 0.35s;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+
+    cursor: pointer;
+    outline: 0;
+
+    width: 100%;
+}
+
+[dir=rtl] .Select select {
+    padding-left: var(--Select-padding-right);
+    padding-right: var(--Select-padding-left);
+}
+
+.Select:after {
+    position: absolute;
+
+    top: 50%;
+    /* right: 0.6em; */
+    right: var(--Select__caret-right);
+    margin-top: ~'calc((var(--Select__caret-font-size) / 2) * -1)';
+    pointer-events: none;
+    color: var(--Select__caret-text-color);
+    line-height: 1;
+
+    font-size: var(--Select__caret-font-size);
+
+    content: "\25BE";
+
+    transition: background-color 0.35s;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+[dir=rtl] .Select:after {
+    right: auto;
+    /* left: 0.6em; */
+    left: var(--Select__caret-right);
+}
+
+.Select select:hover {
+    border-color: var(--Select--hover-border-color);
+}
+
+.Select.is-active select,
+.Select select:active,
+.Select select:focus {
+    outline: 0;
+    box-shadow: var(--Select--focus-box-shadow-width) var(--Select--focus-box-shadow-color);
+}
+
+/* States
+   ========================================================================== */
+
+.Select.is-disabled select,
+.Select select:disabled {
+    border-color: var(--Select--disabled-border-color);
+    background-color: var(--Select--disabled-background-color);
+    color: var(--Select--disabled-text-color);
+    cursor: default;
+    pointer-events: none;
+
+    opacity: var(--Select--disabled-opacity);
+}
+
+.Select.is-disabled:after {
+    color: var(--Select--disabled-color);
+}
+
+.Select.is-active select,
+.Select select:active {
+    -webkit-tap-highlight-color: var(--Select-webkit-tap-highlight-color);
+}
+
+.Select.is-loading {
+    color: var(--Select--loading__text-color);
+    cursor: default;
+
+    pointer-events: none;
+}
+
+.Select.is-loading:before {
+    position: absolute;
+    z-index: 2;
+    box-sizing: border-box;
+
+    right: var(--Select--loading__before-right);
+    top: 50%;
+    margin-top: ~'calc((var(--Select--loading__before-size) / 2) * -1)';
+
+    height: var(--Select--loading__before-size);
+    width: var(--Select--loading__before-size);
+
+    border: var(--Select--loading__before-border-width) var(--Select--loading__before-border-style) var(--Select--loading__before-border-color);
+    border-radius: 50%;
+
+    content: "";
+
+    animation: pulsate 1s ease-out;
+    animation-iteration-count: infinite;
+}
+
+[dir=rtl] .Select.is-loading:before {
+    right: auto;
+    left: var(--Select--loading__before-right);
+}
+
+.Select.is-loading:after {
+    content: "";
+}
+
+/* Sizes
+   ========================================================================== */
+.Select {
+    &--small {
+        font-size: var(--Select--small-font-size);
+
+        & select {
+            padding: var(--Select--small-padding-top) var(--Select--small-padding-right) var(--Select--small-padding-bottom) var(--Select--small-padding-left);
+        }
+
+        &.is-loading:before {
+            margin-top: ~'calc((var(--Select--small--loading__before-size) / 2) * -1)';
+            width: var(--Select--small--loading__before-size);
+            height: var(--Select--small--loading__before-size);
+        }
+
+        &:after {
+            font-size: var(--Select--small-font-size);
+        }
+    }
+
+    &--large {
+        font-size: var(--Select--large-font-size);
+
+        & select {
+            padding: var(--Select--large-padding-top) var(--Select--large-padding-right) var(--Select--large-padding-bottom) var(--Select--large-padding-left);
+        }
+
+        &.is-loading:before {
+            margin-top: ~'calc((var(--Select--large--loading__before-size) / 2) * -1)';
+            width: var(--Select--large--loading__before-size);
+            height: var(--Select--large--loading__before-size);
+        }
+
+        &:after {
+            font-size: var(--Select--large-font-size);
+        }
+    }
+}
+
+[dir=rtl] .Select {
+    &--small {
+        select {
+            padding-right: var(--Select--small-padding-left);
+            padding-left: var(--Select--small-padding-right);
+        }
+    }
+
+    &--large {
+        select {
+            padding-right: var(--Select--large-padding-left);
+            padding-left: var(--Select--large-padding-right);
+        }
+
+    }
+}
+
+/* Specific browser hacks!
+   ========================================================================== */
+
+@-moz-document url-prefix() {
+    .Select select {
+        padding-right: 0;
+    }
+
+    .Select:after {
+        top: 1px;
+        right: 1px;
+
+        margin-top: 0;
+
+        background: inherit;
+        bottom: 1px;
+        padding-right: var(--Select__caret-right);
+        padding-top: ~'calc(var(--Select__caret-font-size) / 2)';
+    }
+
+    .Select--small:after {
+        padding-top: ~'calc(var(--Select--small-font-size) / 2)';
+    }
+
+    .Select--large:after {
+        padding-top: var(--Select--large-font-size);
+    }
+
+    .Select.is-disabled:after {
+        background-color: rgb(241, 241, 241);
+    }
+
+    .Select.is-loading:after {
+        width: 1em;
+    }
+
+    .Select select {
+        transition: none;
+    }
+
+    .Select select:-moz-focusring {
+        color: var(--Select-moz-focusring);
+        text-shadow: 0 0 0 var(--Select-text-color);
+    }
+
+    .Select select:matches(:focus, :hover):-moz-focusring {
+        text-shadow: 0 0 0 var(--Select-text-color);
+    }
+}
+
+/* OPERA - Pre-Blink nix the custom arrow, go with a native select
+ * button to keep it simple. Targeted via this hack
+ * http://browserhacks.com/#hack-a3f166304aafed524566bc6814e1d5c7 */
+x:-o-prefocus, .Select:after {
+    display: none;
+}
+
+/* IE9 and higher hack to hide the arrow */
+@media screen and (min-width: 0) {
+    .Select select {
+        z-index: 1;
+        padding-right: 0;
+    }
+
+    .Select:after {
+        display: none;
+    }
+
+    .Select--small:after {
+        padding-top: ~'calc(var(--Select--small-font-size) / 2)';
+    }
+
+    .Select--large:after {
+        padding-top: var(--Select--large-font-size);
+    }
+
+    .Select.is-disabled:after {
+        background-color: var(--Select--disabled-background-color);
+        background-color: rgb(241, 241, 241);
+    }
+
+    .Select.is-loading select::-ms-expand {
+        display: none;
+    }
+
+    .Select.is-loading:after {
+        z-index: 2;
+
+        display: block;
+        top: 1px;
+        right: 1px;
+
+        margin-top: 0;
+
+        width: 1.2em;
+        background: inherit;
+        bottom: 1px;
+        padding-right: 0.6em;
+        padding-top: 0.25em;
+    }
+
+    .Select.is-loading:before {
+        z-index: 3;
+
+    }
+}
+
+/* IE 10/11+ - This hides native dropdown button arrow so it will have the
+ * custom appearance, IE 9 and earlier get a native select - looking for better
+ * ways to achieve this targeting
+ * (more: http://browserhacks.com/#hack-28f493d247a12ab654f6c3637f6978d5) */
+/* The second rule removes the odd blue bg color behind the text in the select
+ * button in IE 10/11 and sets the text color to match the focus style's -
+ * fix via
+ * http://stackoverflow.com/questions/17553300/ie-bgcolor-on-select-box
+*/
+
+/* @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .Select select::-ms-expand {
+        display: none;
+    }
+
+    .Select select:focus::-ms-value {
+        background: var(--Select-ms-value-background-color);
+        color: var(--Select-ms-value-color);
+    }
+
+    .Select:after {
+        z-index: 2;
+    }
+
+    .Select.is-loading:before {
+        right: 1.5rem;
+    }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .Select:after {
+        z-index: 2;
+    }
+} */
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .Select select:focus::-ms-value {
+        background: var(--Select-ms-value-background-color);
+        color: var(--Select-ms-value-color);
+    }
+
+    .Select:after {
+        z-index: 2;
+    }
+
+    .Select.is-loading:before {
+        right: 0.5rem;
+    }
+}
+
+/* stylelint-disable selector-no-vendor-prefix */
+_:-ms-fullscreen, :root {
+    .Select select::-ms-expand {
+        display: none;
+    }
+
+    .Select:after {
+        display: block;
+        z-index: 2;
+
+        top: 1px;
+        right: 1px;
+        bottom: 1px;
+
+        margin-top: 0;
+        padding-right: ~'calc(var(--Select__caret-right) + 2px)';
+        padding-top: ~'calc(var(--Select__caret-font-size) / 2)';
+    }
+}
+/* stylelint-enable selector-no-vendor-prefix */

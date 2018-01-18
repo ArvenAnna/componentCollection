@@ -1,0 +1,395 @@
+/** @define Button  */
+
+/**
+ * The button classes are to be applied to links, buttons, and inputs.
+ *
+ * Loosely based on SUIT CSS - https://github.com/suitcss/components-button
+ */
+
+:root {
+
+    --Button-border-width: var(--border-width--default);
+    --Button-border-style: var(--border-style--default);
+    --Button-border-radius: var(--border-radius--default);
+    --Button-border-color: var(--border-color--primary);
+    --Button-background-color: var(--background-color--default);
+
+    --Button-box-shadow-color: var(--shadow-color--default);
+    --Button-box-shadow-width: var(--shadow-size--2);
+
+    --Button--hover-box-shadow-color: var(--shadow-color--secondary);
+
+    --Button--focus-box-shadow-color: var(--shadow-color--focus);
+    --Button--focus-box-shadow-width: var(--shadow-size--forState);
+
+    --Button-font-family: inherit;
+    --Button-text-color: var(--text-color--primary);
+    --Button-font-size: var(--font-size--regular);
+    --Button-padding: var(--space-size--sm) var(--space-size--md);
+
+    --Button--xsmall-font-size: var(--font-size--small);
+    --Button--xsmall-padding: 0.125rem var(--space-size--sm);
+    --Button--small-font-size: var(--font-size--regular);
+    --Button--small-padding: var(--space-size--xs) var(--space-size--sm);
+    --Button--large-font-size: var(--font-size--large);
+    --Button-padding-topBottom: var(--space-size--sm);
+    --Button-padding-rightLeft: var(--space-size--md);
+
+    --Button--xsmall-font-size: var(--font-size--small);
+    --Button--xsmall-padding-topBottom: 0.125rem;
+    --Button--xsmall-padding-rightLeft: var(--space-size--sm);
+    --Button--small-font-size: var(--font-size--regular);
+    --Button--small-padding-topBottom: var(--space-size--xs);
+    --Button--small-padding-rightLeft: var(--space-size--sm);
+    --Button--large-font-size: var(--font-size--large);
+    --Button--large-padding-topBottom: 0.875rem;
+    --Button--large-padding-rightLeft: var(--space-size--lg);
+
+    --Button--loading__after-size: ~'calc(var(--Button-font-size) + var(--Button-padding-topBottom) * 2)';
+    --Button--xsmall--loading__after-size: ~'calc(var(--Button--xsmall-font-size) + var(--Button--xsmall-padding-topBottom) * 2)';
+    --Button--small--loading__after-size: ~'calc(var(--Button--small-font-size) + var(--Button--small-padding-topBottom) * 2)';
+    --Button--large--loading__after-size: ~'calc(var(--Button--large-font-size) + var(--Button--large-padding-topBottom) * 2)';
+    --Button--loading-text-color: var(--color-transparent);
+    --Button--loading-text-color: var(--color-transparent);
+
+    --Button--disabled-border-color: var(--border-color--disabled);
+    --Button--disabled-background-color: var(--background-color--disabled);
+    --Button--disabled-text-color: var(--text-color--disabled);
+    --Button--disabled-opacity: var(--opacity--disabled);
+
+    --Button--cta-border-color: var(--border-color--primary);
+    --Button--cta-background-color: var(--background-color--brand);
+    --Button--cta-text-color: var(--text-color--onDark);
+
+    --Button--primary-border-color: var(--border-color--primary);
+    --Button--primary-background-color: var(--background-color--default);
+    --Button--primary-text-color: var(--text-color--primary);
+
+    --Button--secondary-border-color: var(--border-color--secondary);
+    --Button--secondary-background-color: var(--background-color--default);
+    --Button--secondary-text-color: var(--text-color--secondary);
+
+    --Button--info-border-color: var(--color-info);
+    --Button--info-background-color: var(--color-info);
+    --Button--info-text-color: var(--text-color--onDark);
+
+    --Button--success-border-color: var(--color-success);
+    --Button--success-background-color: var(--color-success);
+    --Button--success-text-color: var(--text-color--onDark);
+
+    --Button--warning-border-color: var(--color-warning);
+    --Button--warning-background-color: var(--color-warning);
+    --Button--warning-text-color: var(--text-color--onLight);
+
+    --Button--error-border-color: var(--color-error);
+    --Button--error-background-color: var(--color-error);
+    --Button--error-text-color: var(--text-color--onDark);
+
+    --Button--text-border-color: var(--color-transparent);
+    --Button--text-background-color: var(--color-transparent);
+    --Button--text-text-color: var(--text-color--default);
+    --Button--text--hover-text-color: var(--color-brand);
+
+    --Button--flat-border-color: var(--color-transparent);
+    --Button--flat-background-color: var(--color-transparent);
+    --Button--flat--primary-text-color: var(--text-color--primary);
+    --Button--flat--secondary-text-color: var(--text-color--secondary);
+
+    --Button-webkit-tap-highlight-color: var(--background-color--transparent);
+    --Button-tap-border-color: var(--color-focus);
+}
+
+/**
+ * 1. Make different sized buttons line a bit nicer.
+ * 2. Makes button-styled elements appear clickable.
+ * 3. Force text wrap multiple lines on`input`.
+ * 4. Prevent button text from being selectable.
+  */
+
+.Button {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle; /* [1]  */
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: var(--Button-padding);
+
+    cursor: pointer; /* [2]  */
+
+    border-width: var(--Button-border-width);
+    border-style: var(--Button-border-style);
+    border-radius: var(--Button-border-radius);
+    border-color: var(--Button-border-color);
+
+    background-color: var(--Button-background-color);
+
+    white-space: normal; /* [3]  */
+    font: var(--Button-font-family);
+    font-size: var(--Button-font-size);
+    color: var(--Button-text-color);
+
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+
+    user-select: none; /* [4]  */
+
+    box-shadow: var(--Button-box-shadow-width) var(--Button-box-shadow-color);
+
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    appearance: none;
+
+    transition: border-color 0.35s, background-color 0.35s, color 0.35s;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/**
+ * Remove excess padding and border in Firefox 4+
+  */
+
+.Button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/**
+ * Replace default outline style
+  */
+
+.Button {
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+        text-decoration: none;
+    }
+}
+
+.Button.is-disabled:focus,
+.Button[disabled]:focus {
+    box-shadow: none;
+}
+
+/* States
+   =====================================================  */
+
+/* .Button:disabled,  */
+.Button[disabled],
+.Button.is-disabled,
+.Button.is-disabled:hover,
+.Button.is-disabled:focus,
+.Button.is-disabled:active {
+    border-color: var(--Button--disabled-border-color);
+    background-color: var(--Button--disabled-background-color);
+    color: var(--Button--disabled-text-color);
+    opacity: var(--Button--disabled-opacity);
+    box-shadow: none;
+    outline: 0;
+    cursor: default /* no-drop  */;
+    pointer-events: none;
+}
+
+.Button:hover {
+    box-shadow: var(--Button-box-shadow-width) var(--Button--hover-box-shadow-color);
+}
+
+.Button:focus {
+    box-shadow: var(--Button--focus-box-shadow-width) var(--Button--focus-box-shadow-color);
+    outline: 0;
+    -webkit-tap-highlight-color: var(--Button-webkit-tap-highlight-color);
+}
+
+.Button:active {
+    box-shadow: none;
+    outline: 0;
+}
+
+.Button.is-loading {
+    cursor: default;
+}
+
+.Button.is-loading:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    content: "";
+}
+
+.Button.is-loading:after {
+    content: "";
+    position: absolute;
+    box-sizing: border-box;
+    display: block;
+
+    left: 50%;
+    top: 0;
+
+    width: var(--Button--loading__after-size);
+    height: var(--Button--loading__after-size);
+
+    margin-left: ~'calc((var(--Button--loading__after-size) / 2) * -1)'
+;
+
+    border: 1px solid currentColor;
+    border-radius: 50%;
+
+    animation: pulsate 1s ease-out;
+    animation-iteration-count: infinite;
+}
+
+.Button {
+    &--xsmall.is-loading:after {
+        width: var(--Button--xsmall--loading__after-size);
+        height: var(--Button--xsmall--loading__after-size);
+        margin-left: ~'calc((var(--Button--xsmall--loading__after-size) / 2) * -1)';
+    }
+
+    &--small.is-loading:after {
+        width: var(--Button--small--loading__after-size);
+        height: var(--Button--small--loading__after-size);
+        margin-left: ~'calc((var(--Button--small--loading__after-size) / 2) * -1)';
+    }
+
+    &--large.is-loading:after {
+        width: var(--Button--large--loading__after-size);
+        height: var(--Button--large--loading__after-size);
+        margin-left: ~'calc((var(--Button--large--loading__after-size) / 2) * -1)';
+    }
+}
+
+.Button {
+    &--cta,
+    &--cta:hover,
+    &--cta:focus {
+        background: var(--Button--cta-background-color);
+        border-color: var(--Button--cta-border-color);
+        color: var(--Button--cta-text-color);
+    }
+
+    &--primary,
+    &--primary:hover,
+    &--primary:focus {
+        background: var(--Button--primary-background-color);
+        border-color: var(--Button--primary-border-color);
+        color: var(--Button--primary-text-color);
+    }
+
+    &--secondary,
+    &--secondary:hover,
+    &--secondary:focus {
+        background: var(--Button--secondary-background-color);
+        border-color: var(--Button--secondary-border-color);
+        color: var(--Button--secondary-text-color);
+    }
+
+    &--text {
+        background: var(--Button--text-background-color);
+        border-color: var(--Button--text-border-color);
+        color: var(--Button--text-text-color);
+        text-decoration: underline;
+        box-shadow: none;
+    }
+
+    &--flat {
+        background: var(--Button--flat-background-color);
+        border-color: var(--Button--flat-border-color);
+        box-shadow: none;
+    }
+
+    &--block {
+        width: 100%;
+    }
+}
+
+.Button--text:hover {
+    color: var(--Button--text--hover-text-color);
+    text-decoration: underline;
+    box-shadow: none;
+}
+
+.Button--flat:hover {
+    border-color: inherit;
+}
+
+/* Indicators
+   =====================================================  */
+
+.Button {
+    &--info,
+    &--info:hover,
+    &--info:focus {
+        background-color: var(--Button--info-background-color);
+        border-color: var(--Button--info-border-color);
+        color: var(--Button--info-text-color);
+    }
+
+    &--success,
+    &--success:hover,
+    &--success:focus {
+        background-color: var(--Button--success-background-color);
+        border-color: var(--Button--success-border-color);
+        color: var(--Button--success-text-color);
+    }
+
+    &--warning,
+    &--warning:hover,
+    &--warning:focus {
+        background-color: var(--Button--warning-background-color);
+        border-color: var(--Button--warning-border-color);
+        color: var(--Button--warning-text-color);
+    }
+
+    &--error,
+    &--error:hover,
+    &--error:focus {
+        background-color: var(--Button--error-background-color);
+        border-color: var(--Button--error-border-color);
+        color: var(--Button--error-text-color);
+    }
+}
+
+/* Sizes
+   =====================================================  */
+
+.Button {
+    &--xsmall {
+        font-size: var(--Button--xsmall-font-size);
+        padding: var(--Button--xsmall-padding-topBottom) var(--Button--xsmall-padding-rightLeft);
+    }
+
+    &--small {
+        font-size: var(--Button--small-font-size);
+        padding: var(--Button--small-padding-topBottom) var(--Button--small-padding-rightLeft);
+    }
+
+    &--large {
+        font-size: var(--Button--large-font-size);
+        padding: var(--Button--large-padding-topBottom) var(--Button--large-padding-rightLeft);
+    }
+}
+
+/* Animations
+   =====================================================  */
+
+@keyframes pulsate {
+    0% {
+        transform: scale(0.1);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}

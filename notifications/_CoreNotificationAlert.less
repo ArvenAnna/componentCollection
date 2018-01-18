@@ -1,0 +1,32 @@
+:root {
+    --NotificationAlert-z-index: var(--z-index--NotificationAlert);
+}
+
+/* TODO :: remove .Notification.is-active and .Notification--alert in CC 2.0 */
+
+.NotificationAlert,
+.Notification--alert {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 2rem;
+    z-index: var(--NotificationAlert-z-index);
+
+    transform: translateY(-150%);
+    opacity: 0;
+
+    transition: transform 0.35s, opacity 0.35s;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.Notification--alert .Notification__container,
+.NotificationAlert .Notification__container {
+    width: 80%;
+    max-width: 40rem;
+}
+
+.Notification.is-active,
+.NotificationAlert.is-active {
+    transform: translateY(0);
+    opacity: 1;
+}

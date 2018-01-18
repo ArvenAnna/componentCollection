@@ -1,0 +1,45 @@
+:root {
+    --Radialprogress-width: 70px;
+    --Radialprogress-height: 70px;
+    --Radialprogress--base-color: #ccc;
+    --Radialprogress--primary-color: #e69a22;
+    --Radialprogress--secondary-color: #08219c;
+    --Radialprogress--tertiary-color: #3e3f42;
+}
+
+.Radialprogress {
+    width: var(--Radialprogress-width);
+    height: var(--Radialprogress-height);
+
+    &__svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    &__path {
+        fill: none;
+        stroke-width: 5px;
+
+        &--base {
+            stroke: var(--Radialprogress--base-color);
+        }
+
+        &--primary {
+            stroke: var(--Radialprogress--primary-color);
+        }
+
+        &--secondary {
+            stroke: var(--Radialprogress--secondary-color);
+        }
+
+        &--tertiary {
+            stroke: var(--Radialprogress--tertiary-color);
+        }
+    }
+
+    &__text {
+        top: -46px;
+        left: 24px;
+        font-size: 14px;
+    }
+}

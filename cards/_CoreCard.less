@@ -1,0 +1,152 @@
+/** @define Card */
+
+/**
+ * Cards are used to apply a container around a related grouping of information
+ * A card can contain images, text, or other types of content.
+ */
+
+:root {
+    --Card-background-color: var(--background-color--default);
+    --Card-box-shadow-color: var(--shadow-color--default);
+    --Card-box-shadow-width: var(--shadow-size--1);
+
+    --Card-border-color: var(--border-color--default);
+    --Card-border-width: var(--border-width--default);
+    --Card-border-style: var(--border-style--default);
+    --Card-border-radius: var(--border-radius--default);
+
+    --Card__header-padding: var(--space-size--sm) var(--space-size--md);
+
+    --Card__header__divider-border-color: var(--border-color--light);
+    --Card__header__divider-border-style: var(--border-style--default);
+    --Card__header__divider-border-width: var(--border-width--default);
+    --Card__footer__divider-border-color: var(--border-color--light);
+    --Card__footer__divider-border-style: var(--border-style--default);
+    --Card__footer__divider-border-width: var(--border-width--default);
+
+    --Card__media__extra-background-color: rgba(247, 247, 247, 0.5);
+    --Card__media__legend-padding: var(--space-size--sm) var(--space-size--md);
+
+    --Card__item-padding-top: var(--space-size--md);
+    --Card__item-padding-right: var(--space-size--md);
+    --Card__item-padding-bottom: var(--space-size--md);
+    --Card__item-padding-left: var(--space-size--md);
+
+    --Card__action-padding-top: var(--space-size--md);
+    --Card__action-padding-right: var(--space-size--md);
+    --Card__action-padding-bottom: var(--space-size--md);
+    --Card__action-padding-left: var(--space-size--md);
+
+    --Card__footer-padding: var(--space-size--sm) var(--space-size--md);
+
+    --Card__footer-font-size: var(--font-size--small);
+    --Card__subtitle-font-size: var(--font-size--regular);
+    --Card__text-font-size: var(--font-size--regular);
+
+    --Card-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.Card {
+    position: relative;
+
+    max-width: 100%;
+
+    background-color: var(--Card-background-color);
+    border: var(--Card-border-width) var(--Card-border-style) var(--Card-border-color);
+    box-shadow: var(--Card-box-shadow-width) var(--Card-box-shadow-color);
+    border-radius: var(--Card-border-radius);
+
+    overflow: hidden;
+
+    vertical-align: top;
+
+    -webkit-tap-highlight-color: var(--Card-webkit-tap-highlight-color);
+}
+
+.Card__header {
+    position: relative;
+    padding: var(--Card__header-padding);
+}
+
+.Card__header.has-divider {
+    border-bottom: var(--Card__header__divider-border-width) var(--Card__header__divider-border-style) var(--Card__header__divider-border-color);
+}
+
+.Card__media {
+    position: relative;
+    overflow: hidden;
+}
+
+.Card__media > img,
+.Card__media > video {
+    position: relative;
+    width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+.Card__media__extra {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: var(--Card__media__extra-background-color);
+}
+
+.Card__media__legend {
+    padding: var(--Card__media__legend-padding);
+}
+
+.Card__item {
+    position: relative;
+    display: block;
+    padding: var(--Card__item-padding-top) var(--Card__item-padding-right) var(--Card__item-padding-bottom) var(--Card__item-padding-left);
+    margin: 0;
+}
+
+.Card__item + .Card__item {
+    margin-top: -var(--Card__item-padding-top);
+}
+
+.Card__actions {
+    position: relative;
+    padding: var(--Card__action-padding-top) var(--Card__action-padding-right) var(--Card__action-padding-bottom) var(--Card__action-padding-left);
+    text-align: right;
+}
+
+[dir=rtl] .Card__actions {
+    text-align: left;
+}
+
+.Card__actions + .Card__actions {
+    margin-top: -var(--Card__action-padding-top);
+}
+
+.Card__actions + .Card__item,
+.Card__item + .Card__actions {
+    margin-top: -var(--Card__action-padding-top);
+}
+
+.Card__footer {
+    position: relative;
+    padding: var(--Card__footer-padding);
+    font-size: var(--Card__footer-font-size);
+}
+
+.Card__footer.has-divider {
+    border-top: var(--Card__footer__divider-border-width) var(--Card__footer__divider-border-style) var(--Card__footer__divider-border-color);
+}
+
+.Card__menu {
+    z-index: 9;
+    position: absolute;
+
+    top: 1rem;
+    right: 1rem;
+
+    cursor: pointer;
+}
+
+[dir=rtl] .Card__menu {
+    right: auto;
+    left: 1rem;
+}

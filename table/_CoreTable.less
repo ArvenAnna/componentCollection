@@ -1,0 +1,247 @@
+/** @define Table */
+
+/**
+ * Tables are used to present raw data sets.
+ */
+
+:root {
+    --Table-font-size: var(--font-size--regular);
+    --Table-text-color: var(--text-color--default);
+    --Table-background-color: var(--background-color--default);
+
+    --Table__caption-padding: var(--space-size--sm) var(--space-size--sm);
+    --Table--compact__caption-padding: var(--space-size--xs) var(--space-size--xs);
+    --Table--spacious__caption-padding: var(--space-size--md) var(--space-size--md);
+
+    --Table__th-padding: var(--space-size--sm) var(--space-size--sm);
+    --Table--compact__th-padding: var(--space-size--xs) var(--space-size--xs);
+    --Table--spacious__th-padding: var(--space-size--md) var(--space-size--md);
+    --Table__th-text-color: var(--text-color--secondary);
+    --Table__th-font-size: var(--font-size--small);
+
+    --Table__td-padding: var(--space-size--sm) var(--space-size--sm);
+    --Table--compact__td-padding: var(--space-size--xs) var(--space-size--xs);
+    --Table--spacious__td-padding: var(--space-size--md) var(--space-size--md);
+
+    --Table-border-width: var(--border-width--default);
+    --Table-border-style: var(--border-style--default);
+    --Table-border-color: var(--border-color--default);
+
+    --Table--hoverable__tr--hover-background-color: var(--background-color--secondary);
+    --Table--striped__tr--even-background-color: var(--background-color--light);
+
+    //--Table__selected-background-color: color(var(--color-warning) tint(80%));
+    --Table__selected-background-color: lighten(#fabe35, 80%);
+    --Table__disabled-opacity: var(--opacity--disabled);
+
+    --Table--info-background-color: var(--color-info-ligsht);
+    --Table--info-text-color: var(--color-info);
+    //--Table--info--hover-background-color: color(var(--color-info) tint(85%));
+    --Table--info--hover-background-color: lighten(#1b4498, 85%);
+    --Table--success-background-color: var(--color-success-light);
+    --Table--success-text-color: var(--color-success);
+    //--Table--success--hover-background-color: color(var(--color-success) tint(85%));
+    --Table--success--hover-background-color: lighten(#0e7c45, 85%);
+    --Table--warning-background-color: var(--color-warning-light);
+    --Table--warning-text-color: var(--color-warning);
+    //--Table--warning--hover-background-color: color(var(--color-warning) tint(85%));
+    --Table--warning--hover-background-color: lighten(#fabe35, 85%);
+    --Table--error-background-color: var(--color-error-light);
+    --Table--error-text-color: var(--color-error);
+    //--Table--error--hover-background-color: color(var(--color-error) tint(85%));
+    --Table--error--hover-background-color: lighten(#b81414, 85%);
+}
+
+.Table {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    font-size: var(--Table-font-size);
+    border-collapse: collapse;
+    border-spacing: 0;
+    color: var(--Table-text-color);
+    background-color: var(--Table-background-color);
+    font-weight: 400;
+    line-height: 1;
+}
+
+.Table caption {
+    padding: var(--Table__caption-padding);
+}
+
+[dir=rtl] {
+    .Table caption {
+        text-align: right;
+    }
+}
+
+.Table th {
+    padding: var(--Table__th-padding);
+}
+
+.Table td {
+    padding: var(--Table__td-padding);
+}
+
+.Table th {
+    text-align: left;
+}
+
+.Table td {
+    text-align: left;
+}
+
+.Table td {
+    border-top: var(--Table-border-width) var(--Table-border-style) var(--Table-border-color);
+}
+
+.Table th {
+    text-overflow: ellipsis;
+    color: var(--Table__th-text-color);
+    font-weight: 400;
+    font-size: var(--Table__th-font-size);
+}
+
+.Table .Table__cell--numeric {
+    text-align: right;
+}
+
+[dir=rtl] {
+    .Table .Table__cell--numeric {
+        text-align: left;
+    }
+}
+
+.Table--data {
+    border: var(--Table-border-width) var(--Table-border-style) var(--Table-border-color);
+}
+
+.Table--data td + td,
+.Table--data th + td {
+    border-color: var(--Table-border-color);
+    border-style: var(--Table-border-style);
+    border-width: var(--Table-border-width) 0 0 var(--Table-border-width);
+}
+
+[dir=rtl] {
+    .Table--data td + td,
+    .Table--data th + td {
+        border-color: var(--Table-border-color);
+        border-style: var(--Table-border-style);
+        border-width: var(--Table-border-width) var(--Table-border-width) 0 0;
+    }
+}
+
+.Table--data th + th {
+    border-left: var(--Table-border-width) var(--Table-border-style) var(--Table-border-color);
+    border-bottom: var(--Table-border-width) var(--Table-border-style) var(--Table-border-color);
+}
+
+[dir=rtl] {
+    .Table--data th + th {
+        border-left: 0;
+        border-right: var(--Table-border-width) var(--Table-border-style) var(--Table-border-color);
+    }
+}
+
+.Table--compact caption {
+    padding: var(--Table--compact__caption-padding);
+}
+
+.Table--compact th {
+    padding: var(--Table--compact__th-padding);
+}
+
+.Table--compact td {
+    padding: var(--Table--compact__td-padding);
+}
+
+.Table--spacious caption {
+    padding: var(--Table--spacious__caption-padding);
+}
+
+.Table--spacious th {
+    padding: var(--Table--spacious__th-padding);
+}
+
+.Table--spacious td {
+    padding: var(--Table--spacious__td-padding);
+}
+
+.Table--hoverable tbody tr:hover {
+    background-color: var(--Table--hoverable__tr--hover-background-color);
+}
+
+/* stylelint-disable swissquote/no-state-without-component */
+.Table tbody td.is-selected,
+.Table tbody tr.is-selected {
+    background-color: var(--Table__selected-background-color);
+}
+/* stylelint-enable swissquote/no-state-without-component */
+
+.Table--striped tbody tr:nth-child(even) {
+    background-color: var(--Table--striped__tr--even-background-color);
+}
+
+.Table--collapsible {
+    width: auto;
+}
+
+/* stylelint-disable swissquote/no-state-without-component */
+.Table tbody tr.is-disabled,
+.Table tbody td.is-disabled {
+    opacity: var(--Table__disabled-opacity);
+    pointer-events: none;
+}
+/* stylelint-enable swissquote/no-state-without-component */
+
+.Table--info {
+    background-color: var(--Table--info-background-color);
+    color: var(--Table--info-text-color);
+}
+
+.Table--info:hover > td {
+    background-color: var(--Table--info--hover-background-color);
+}
+
+.Table--success {
+    background-color: var(--Table--success-background-color);
+    color: var(--Table--success-text-color);
+}
+
+.Table--success:hover > td {
+    background-color: var(--Table--success--hover-background-color);
+}
+
+.Table--warning {
+    background-color: var(--Table--warning-background-color);
+    color: var(--Table--warning-text-color);
+}
+
+.Table--warning:hover > td {
+    background-color: var(--Table--warning--hover-background-color);
+}
+
+.Table--error {
+    background-color: var(--Table--error-background-color);
+    color: var(--Table--error-text-color);
+}
+
+.Table--error:hover > td {
+    background-color: var(--Table--error--hover-background-color);
+}
+
+.Table--emphasized {
+    font-weight: 500;
+}
+
+.Table--data td {
+    vertical-align: top;
+    border-top: 1px solid var(--Table-border-color);
+}
+
+.Table .Table__cell--collapsing {
+    width: 1%;
+    white-space: nowrap;
+    text-align: center;
+}

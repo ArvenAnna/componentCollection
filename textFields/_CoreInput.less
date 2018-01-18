@@ -1,0 +1,115 @@
+:root {
+
+    --Input-height: 2rem;
+    --Input-padding: var(--space-size--sm) var(--space-size--sm);
+    --Input-border-radius: var(--border-radius--default);
+    --Input-border-color: var(--border-color--default);
+    --Input-border-style: var(--border-style--default);
+    --Input-border-width: var(--border-width--default);
+    --Input-background-color: var(--background-color--default);
+    --Input-font-size: var(--font-size--regular);
+    --Input-text-color: var(--text-color--default);
+
+    --Input--hover-border-color: var(--border-color--forState);
+
+    --Input--focus-box-shadow-color: var(--shadow-color--focus);
+    --Input--focus-box-shadow-width: var(--shadow-size--forState);
+
+    --Input--disabled-border-color: var(--border-color--disabled);
+    --Input--disabled-background-color: var(--background-color--disabled);
+    --Input--disabled-text-color: var(--text-color--disabled);
+    --Input--disabled-opacity: var(--opacity--disabled);
+
+    --Input__placeholder-text-color: var(--text-color--secondary);
+
+    --Input--small-font-size: var(--font-size--regular);
+    --Input--small-padding: var(--space-size--xs) var(--space-size--sm);
+    --Input--small-height: 1.5rem;
+    --Input--large-font-size: var(--font-size--large);
+    --Input--large-padding: 0.875rem var(--space-size--md);
+    --Input--large-height: 3rem;
+}
+
+/**
+ * 1. Fix line-height on IE 8/9.
+ */
+
+.Input {
+    box-sizing: border-box;
+
+    appearance: none;
+
+    position: relative;
+
+    display: inline-block;
+    height: var(--Input-height);
+    max-width: 100%;
+    width: 100%;
+    border: var(--Input-border-width) var(--Input-border-style) var(--Input-border-color);
+    border-radius: var(--Input-border-radius);
+    background: var(--Input-background-color);
+    padding: var(--Input-padding);
+    line-height: 1; /* 1 */
+    color: var(--Input-text-color);
+    font-size: var(--Input-font-size);
+
+    transition: border-color 0.35s;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.Input:hover {
+    border-color: var(--Input--hover-border-color);
+}
+
+.Input:active,
+.Input:focus {
+    box-shadow: var(--Input--focus-box-shadow-width) var(--Input--focus-box-shadow-color);
+    outline: 0;
+}
+
+.Input[disabled] {
+    opacity: var(--Input--disabled-opacity);
+
+    border-color: var(--Input--disabled-border-color);
+    background: var(--Input--disabled-background-color);
+    color: var(--Input--disabled-text-color);
+    cursor: not-allowed;
+    transition: none;
+}
+
+.Input[disabled]:active,
+.Input[disabled]:focus {
+    border-color: var(--Input--disabled-border-color);
+    outline: none;
+}
+
+.Input::-ms-clear {
+    height: 0;
+    width: 0;
+}
+
+.Input__placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: text;
+    color: var(--Input__placeholder-text-color);
+    height: var(--Input-height);
+    padding-top: 0.4rem;
+    padding-left: 0.5rem;
+    z-index: 1;
+}
+
+.Input {
+    &--small {
+        height: var(--Input--small-height);
+        font-size: var(--Input--small-font-size);
+        padding: var(--Input--small-padding);
+    }
+
+    &--large {
+        height: var(--Input--large-height);
+        font-size: var(--Input--large-font-size);
+        padding: var(--Input--large-padding);
+    }
+}

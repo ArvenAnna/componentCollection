@@ -1,0 +1,87 @@
+/* Tooltip */
+:root {
+    --Tooltip-padding: var(--space-size--xs) var(--space-size--sm);
+    --Tooltip-background-color: var(--color-base);
+    --Tooltip-text-color: #fff;
+    --Tooltip-z-index: var(--z-index--Tooltip);
+}
+
+.Tooltip {
+    display: inline-block;
+    position: absolute;
+    max-width: 200px;
+    padding: var(--Tooltip-padding);
+    color: var(--Tooltip-text-color);
+    text-align: center;
+    background-color: var(--Tooltip-background-color);
+    border-radius: var(--border-radius--default);
+    z-index: var(--Tooltip-z-index);
+}
+
+.Tooltip__arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: var(--Tooltip-background-color);
+    border-style: solid;
+}
+
+.Tooltip:matches([x-placement^="top"], [data-placement^="top"]) {
+    margin-bottom: 5px;
+
+    .Tooltip__arrow {
+        border-left-color: transparent;
+        border-right-color: transparent;
+        left: calc(50% - 5px);
+        margin-top: 0;
+        margin-bottom: 0;
+        border-width: 5px 5px 0 5px;
+        border-bottom-color: transparent;
+        bottom: -5px;
+    }
+}
+
+.Tooltip:matches([x-placement^="bottom"], [data-placement^="bottom"]) {
+    margin-bottom: 0;
+
+    .Tooltip__arrow {
+        border-left-color: transparent;
+        border-right-color: transparent;
+        left: calc(50% - 5px);
+        margin-top: 0;
+        margin-bottom: 0;
+        border-width: 0 5px 5px 5px;
+        border-top-color: transparent;
+        top: -5px;
+    }
+}
+
+.Tooltip:matches([x-placement^="right"], [data-placement^="right"]) {
+    margin-left: 5px;
+
+    .Tooltip__arrow {
+        border-top-color: transparent;
+        border-bottom-color: transparent;
+        top: calc(50% - 5px);
+        margin-right: 0;
+        margin-left: 0;
+        border-width: 5px 5px 5px 0;
+        border-left-color: transparent;
+        left: -5px;
+    }
+}
+
+.Tooltip:matches([x-placement^="left"], [data-placement^="left"]) {
+    margin-right: 5px;
+
+    .Tooltip__arrow {
+        border-top-color: transparent;
+        border-bottom-color: transparent;
+        top: calc(50% - 5px);
+        margin-right: 0;
+        margin-left: 0;
+        border-width: 5px 0 5px 5px;
+        border-right-color: transparent;
+        right: -5px;
+    }
+}

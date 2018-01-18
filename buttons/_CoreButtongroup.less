@@ -1,0 +1,122 @@
+/** @define ButtonGroup */
+
+/**
+ * A Button group acts as a container for buttons which have related actions.
+ */
+
+/**
+ * 1. Remove default styles when an `ol` or an `ul` is the root element.
+ * 2. Collapse whitespace between child elements.
+ */
+
+.ButtonGroup {
+    position: relative;
+
+    display: inline-block;
+
+    vertical-align: middle;
+
+    list-style: none; /* [1] */
+    margin: 0; /* [1] */
+    padding: 0; /* [1] */
+
+    font-size: 0; /* [2] */
+
+}
+
+.ButtonGroup > .Button + .Button,
+.ButtonGroup > .Button + .ButtonGroup,
+.ButtonGroup > .ButtonGroup + .Button,
+.ButtonGroup > .ButtonGroup + .ButtonGroup {
+    margin-left: -1px;
+}
+
+.ButtonGroup > .Button {
+    &:not(:first-child, :last-child) {
+        border-radius: 0;
+    }
+}
+
+.ButtonGroup:not(.ButtonGroup--vertical) > .Button {
+    &:first-child:not(:only-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    &:last-child:not(:only-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}
+
+/**
+ * Nested buttons still have the border radius
+ */
+
+.ButtonGroup:not(.ButtonGroup--vertical) > .ButtonGroup:not(.ButtonGroup--vertical) > .Button {
+    &:first-child {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    /* TODO :: find a way to do it for last child */
+}
+
+/**
+ * Ensure that `:hover`, `:focus` and `:active`
+ * buttons sit on top of other buttons.
+ */
+
+.ButtonGroup > .Button:hover,
+.ButtonGroup > .Button:focus,
+.ButtonGroup > .Button:active {
+    z-index: 2;
+}
+
+/* Modifiers
+   ========================================================================== */
+
+.ButtonGroup--vertical {
+    display: block;
+}
+
+.ButtonGroup--vertical > .Button {
+    display: block;
+    width: 100%;
+}
+
+/**
+ * Nested vertical button groups
+ */
+
+.ButtonGroup--vertical .Button + .Button,
+.ButtonGroup--vertical .Button + .ButtonGroup--vertical,
+.ButtonGroup--vertical .ButtonGroup--vertical + .Button,
+.ButtonGroup--vertical .ButtonGroup--vertical + .ButtonGroup--vertical {
+    margin-left: 0;
+    margin-top: -1px;
+}
+
+.ButtonGroup--vertical > .Button {
+    &:first-child {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    &:last-child {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+}
+
+.ButtonGroup--block {
+    display: table;
+    table-layout: fixed;
+    /* border-collapse: collapse; */
+    width: 100%;
+}
+
+.ButtonGroup--block > .Button,
+.ButtonGroup--block > .ButtonGroup {
+    display: table-cell;
+}

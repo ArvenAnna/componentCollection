@@ -1,0 +1,218 @@
+
+:root {
+    --Menu-border-radius: var(--border-radius--default);
+    --Menu-border-color: var(--border-color--default);
+    --Menu-border-style: var(--border-style--default);
+    --Menu-border-width: var(--border-width--default);
+    --Menu-background-color: var(--background-color--default);
+    --Menu-margin: var(--space-size--xs);
+    --Menu-padding: var(--space-size--sm) var(--space--null);
+
+    // Header
+    --Menu__header-text-color: var(--text-color--secondary);
+    --Menu__header-padding: var(--space-size--xs) var(--space-size--sm);
+    --Menu__header-font-size: var(--font-size--small);
+    --Menu--small__header-padding: var(--space-size--xs) var(--space-size--sm);
+    --Menu--small__header-font-size: var(--font-size--small);
+    --Menu--large__header-padding: var(--space-size--sm) var(--space-size--sm);
+    --Menu--large__header-font-size: var(--font-size--regular);
+
+    // Item
+    --Menu__item--selected-background-color: var(--background-color--secondary);
+    --Menu__item-text-color: inherit;
+    --Menu__item-font-size: var(--font-size--regular);
+    --Menu__item-side-padding: var(--space-size--md);
+    --Menu__item-padding: var(--space-size--sm) var(--Menu__item-side-padding);
+    --Menu--small__item-font-size: var(--font-size--regular);
+    --Menu--small__item-padding: var(--space-size--xs) var(--space-size--md);
+    --Menu--large__item-font-size: var(--font-size--large);
+    --Menu--large__item-padding: 0.875rem var(--space-size--md);
+
+    // Divider
+    --Menu__divider-background-color: var(--background-color--secondary);
+    --Menu__divider-margin: var(--space-size--sm) var(--space--null);
+    --Menu--small__divider-margin: var(--space-size--xs) var(--space--null);
+    --Menu--large__divider-margin: var(--space-size--md) var(--space--null);
+    --Menu--small__divider-font-size: var(--font-size--small);
+    --Menu--large__divider-font-size: var(--font-size--large);
+    --Menu__divider-font-size: var(--font-size--regular);
+}
+
+.Menu {
+    display: inline-block;
+    white-space: nowrap;
+    margin: var(--Menu-margin) 0;
+    padding: var(--Menu-padding);
+    border: var(--Menu-border-width) var(--Menu-border-style) var(--Menu-border-color);
+    background: var(--Menu-background-color);
+    list-style: none;
+    z-index: 1;
+    line-height: 1;
+}
+
+/**
+* Menu Item
+*/
+.Menu__item {
+    position: relative;
+    margin: 0;
+    padding: var(--Menu__item-padding);
+    font-size: var(--Menu__item-font-size);
+    cursor: pointer;
+
+    &:hover,
+    &.is-selected,
+    &.is-open {
+        background: var(--Menu__item--selected-background-color);
+    }
+
+    &.is-disabled {
+        cursor: default;
+        opacity: var(--Dropdown--disabled-opacity);
+        pointer-events: none;
+    }
+
+    &.has-submenu {
+        // Padding for the caret
+        padding-right: ~'calc(var(--Menu__item-side-padding) * 2.5)';
+    }
+
+    [dir=rtl] &.has-submenu {
+        // Padding for the caret
+        padding-right: var(--Menu__item-side-padding);
+        padding-left: ~'calc(var(--Menu__item-side-padding) * 2.5)';
+    }
+
+    .Menu--small & {
+        padding: var(--Menu--small__item-padding);
+        font-size: var(--Menu--small__item-font-size);
+    }
+
+    .Menu--large & {
+        padding: var(--Menu--large__item-padding);
+        font-size: var(--Menu--large__item-font-size);
+    }
+}
+
+/**
+* Menu Header
+*/
+.Menu__header {
+    position: relative;
+    margin: 0;
+    display: block;
+    padding: var(--Menu__header-padding);
+    font-size: var(--Menu__header-font-size);
+    color: var(--Menu__header-text-color);
+
+    .Menu--small & {
+        padding: var(--Menu--small__header-padding);
+    }
+
+    .Menu--large & {
+        padding: var(--Menu--large__header-padding);
+    }
+}
+
+/**
+* Menu Divider
+*/
+.Menu__divider {
+    position: relative;
+    height: 1px;
+    margin: var(--Menu__divider-margin);
+    border: 0;
+    background-color: var(--Menu__divider-background-color);
+
+    .Menu--small & {
+        margin: var(--Menu--small__divider-margin);
+    }
+
+    .Menu--large & {
+        margin: var(--Menu--large__divider-margin);
+    }
+}
+
+/**
+* Submenu
+*/
+.Menu__item.has-submenu > .Menu {
+    position: absolute;
+    display: none;
+    left: 100%;
+    top: 0;
+    margin-top: -var(--Menu-margin);
+    margin-left: var(--Menu-margin);
+}
+
+[dir=rtl] .Menu__item.has-submenu > .Menu {
+    left: auto;
+    right: 100%;
+    margin-right: var(--Menu-margin);
+    margin-left: 0;
+}
+
+// Align the bottom of Submenu when the window is aligned on top
+[data-placement="top-start"] .Menu__item.has-submenu > .Menu,
+[x-placement="top-start"] .Menu__item.has-submenu > .Menu {
+    bottom: 0;
+    top: auto;
+    margin-top: auto;
+    margin-bottom: -var(--Menu-margin);
+}
+
+.Menu__item.has-submenu.is-open > .Menu {
+    display: block;
+    z-index: 9;
+}
+
+/*
+ * Caret
+ */
+.Menu__item.has-submenu > .Caret {
+    position: absolute;
+    top: 50%;
+    margin-top: ~'calc((var(--Caret-size) / 2) * -1)';
+    right: 0.5em;
+}
+
+[dir=rtl] .Menu__item.has-submenu > .Caret {
+    right: auto;
+    left: 0.5em;
+}
+
+.Menu__item.has-submenu > .Caret { transform: rotate(270deg); }
+
+[dir=rtl] .Menu__item.has-submenu > .Caret { transform: rotate(90deg); }
+
+/*
+ * Block
+ */
+.Menu--block {
+    width: 100%;
+}
+
+.Menu--block .Menu__item.has-submenu {
+    // reset caret padding
+    padding-right: var(--Menu__item-side-padding);
+    padding-left: var(--Menu__item-side-padding);
+}
+
+.Menu--block .Menu__item.has-submenu > .Menu {
+    position: relative;
+    left: 0;
+    right: 0;
+    width: ~'calc(100% + calc(var(--Menu__item-side-padding) * 2))';
+    margin: 0.375em 0 0 -var(--Menu__item-side-padding);
+    border-left-width: 0;
+    border-right-width: 0;
+}
+
+[dir=rtl] .Menu--block .Menu__item.has-submenu > .Menu {
+    margin: 0.375em -var(--Menu__item-side-padding) 0 0;
+}
+
+.Menu--block .Menu__item.has-submenu > .Caret {
+    top: 1em; /* TODO :: find a better alignment, doesn't work well in --small and --large */
+    transform: rotate(0deg) !important;
+}
