@@ -16,62 +16,62 @@ class Tabs extends React.Component {
                 <CryptoTabs tabs={["Register", "Login"]} activeIndex={1}/>
             </div>
 
-            <div className="element_block">
-                <CoreTabs>
+            <div className="element_block" style={{width: '300px'}}>
+                <CoreTabs style={{marginBottom: '30px'}}>
                     <CoreTabsPanel title="Tab 1">
-                        <h3>Tab 1</h3>
-                        <p>Lorem ipsum...</p>
+                        <h3>Tab content</h3>
+                        <p>Tab1 content ...</p>
                     </CoreTabsPanel>
                     <CoreTabsPanel title="Tab 2">
-                        <h3>Tab 2</h3>
+                        <h3>Tab2 content</h3>
                         <p>Lorem ipsum...</p>
                     </CoreTabsPanel>
                     <CoreTabsPanel title="Tab 3" disabled>
-                        <h3>Tab 3</h3>
+                        <h3>Disabled tab</h3>
+                        <p>Lorem ipsum...</p>
+                    </CoreTabsPanel>
+                </CoreTabs>
+
+                <CoreTabs block style={{marginBottom: '30px'}}>
+                    <CoreTabsPanel title="Tab 1">
+                        <h3>Block tabs</h3>
+                        <p>Tab 1 content...</p>
+                    </CoreTabsPanel>
+                    <CoreTabsPanel title="Tab 2">
+                        <h3>Tab 2 content</h3>
+                        <p>Lorem ipsum...</p>
+                    </CoreTabsPanel>
+                    <CoreTabsPanel title="Tab 3">
+                        <h3>Tab 3 content</h3>
+                        <p>Lorem ipsum...</p>
+                    </CoreTabsPanel>
+                </CoreTabs>
+
+                <CoreTabs variant="loud" style={{marginBottom: '30px'}}>
+                    <CoreTabsPanel title="Tab 1">
+                        <h3>Loud tabs</h3>
+                        <p>Tab1 content...</p>
+                    </CoreTabsPanel>
+                    <CoreTabsPanel title="Tab 2">
+                        <h3>Tab 2 content</h3>
+                        <p>Lorem ipsum...</p>
+                    </CoreTabsPanel>
+                    <CoreTabsPanel title="Tab 3">
+                        <h3>Tab 3 content</h3>
                         <p>Lorem ipsum...</p>
                     </CoreTabsPanel>
                 </CoreTabs>
 
                 <CoreTabs position="bottom">
                     <CoreTabsPanel title="Tab 1">
-                        <h3>Tab 1</h3>
-                        <p>Lorem ipsum...</p>
+                        <h3>Bottom tabs</h3>
+                        <p>Tab 1 content...</p>
                     </CoreTabsPanel>
                     <CoreTabsPanel title="Tab 2">
-                        <h3>Tab 2</h3>
+                        <h3>Tab 2 content</h3>
                         <p>Lorem ipsum...</p>
                     </CoreTabsPanel>
                     <CoreTabsPanel title="Tab 3" hidden>
-                        <h3>Tab 3</h3>
-                        <p>Lorem ipsum...</p>
-                    </CoreTabsPanel>
-                </CoreTabs>
-
-                <CoreTabs block>
-                    <CoreTabsPanel title="Tab 1">
-                        <h3>Tab 1</h3>
-                        <p>Lorem ipsum...</p>
-                    </CoreTabsPanel>
-                    <CoreTabsPanel title="Tab 2">
-                        <h3>Tab 2</h3>
-                        <p>Lorem ipsum...</p>
-                    </CoreTabsPanel>
-                    <CoreTabsPanel title="Tab 3">
-                        <h3>Tab 3</h3>
-                        <p>Lorem ipsum...</p>
-                    </CoreTabsPanel>
-                </CoreTabs>
-
-                <CoreTabs variant="loud">
-                    <CoreTabsPanel title="Tab 1">
-                        <h3>Tab 1</h3>
-                        <p>Lorem ipsum...</p>
-                    </CoreTabsPanel>
-                    <CoreTabsPanel title="Tab 2">
-                        <h3>Tab 2</h3>
-                        <p>Lorem ipsum...</p>
-                    </CoreTabsPanel>
-                    <CoreTabsPanel title="Tab 3">
                         <h3>Tab 3</h3>
                         <p>Lorem ipsum...</p>
                     </CoreTabsPanel>
@@ -81,35 +81,35 @@ class Tabs extends React.Component {
             <div className="element_block">
                 <CoreNav size="small">
                     <CoreNavItem href="#">Item1</CoreNavItem>
-                    <CoreNavItem href="#" active>Item2</CoreNavItem>
+                    <CoreNavItem href="#" active>Active item 2</CoreNavItem>
                     <CoreNavItem href="#">Item3</CoreNavItem>
-                </CoreNav>
-                <CoreNav horizontal>
-                    <CoreNavItem href="#">Item1</CoreNavItem>
-                    <CoreNavItem href="#">Item2</CoreNavItem>
-                    <CoreNavItem href="#">Item3</CoreNavItem>
-                </CoreNav>
-                <CoreNav size="large" loud>
-                    <CoreNavItem href="#">Item 1</CoreNavItem>
-                    <CoreNavItem href="#">Item 2</CoreNavItem>
-                    <CoreNavItem href="#">Item 3</CoreNavItem>
                 </CoreNav>
                 <CoreNav disabled>
-                    <CoreNavItem href="#">Item 1</CoreNavItem>
-                    <CoreNavItem href="#">Item 2</CoreNavItem>
-                    <CoreNavItem href="#">Item 3</CoreNavItem>
+                    <CoreNavItem href="#">Disabled 1</CoreNavItem>
+                    <CoreNavItem href="#">Disabled 2</CoreNavItem>
+                    <CoreNavItem href="#">Disabled 3</CoreNavItem>
+                </CoreNav>
+                <CoreNav size="large" loud>
+                    <CoreNavItem href="#">Loud 1</CoreNavItem>
+                    <CoreNavItem href="#">Loud 2</CoreNavItem>
+                    <CoreNavItem href="#">Loud 3</CoreNavItem>
                 </CoreNav>
                 <CoreNav hoverable>
-                    <CoreNavItem href="#">Item 1</CoreNavItem>
-                    <CoreNavItem href="#">Item 2</CoreNavItem>
+                    <CoreNavItem href="#">Hoverable 1</CoreNavItem>
+                    <CoreNavItem href="#">Hoverable 2</CoreNavItem>
                     <CoreNavItem>
                         <CoreNav>
-                            <CoreNavItem href="#">Item 2 - 1</CoreNavItem>
-                            <CoreNavItem href="#">Item 2 - 2</CoreNavItem>
-                            <CoreNavItem href="#">Item 2 - 3</CoreNavItem>
+                            <CoreNavItem href="#">subitem 2 - 1</CoreNavItem>
+                            <CoreNavItem href="#">subitem 2 - 2</CoreNavItem>
+                            <CoreNavItem href="#">subitem 2 - 3</CoreNavItem>
                         </CoreNav>
                     </CoreNavItem>
-                    <CoreNavItem href="#">Item 3</CoreNavItem>
+                    <CoreNavItem href="#">Hoverable 3</CoreNavItem>
+                </CoreNav>
+                <CoreNav horizontal>
+                    <CoreNavItem href="#">Horizontal 1</CoreNavItem>
+                    <CoreNavItem href="#">Horizontal 2</CoreNavItem>
+                    <CoreNavItem href="#">Horizontal 3</CoreNavItem>
                 </CoreNav>
             </div>
 

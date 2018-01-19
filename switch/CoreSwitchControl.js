@@ -1,9 +1,9 @@
 import React from 'react';
 import * as PropTypes from "prop-types";
-import Checkbox from "./Checkbox";
-import './_SwitchControl.less';
+import Checkbox from "./CoreCheckbox";
+import './_CoreSwitchControl.less';
 
-class SwitchControl extends React.Component {
+class CoreSwitchControl extends React.Component {
 
      static propTypes = {
          "name": PropTypes.string,
@@ -19,4 +19,4 @@ class SwitchControl extends React.Component {
     }
 }
 
-export default SwitchControl;
+export default CoreSwitchControl;

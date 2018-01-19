@@ -1,5 +1,7 @@
 import * as React from "react";
 import './_CoreMenu.less';
+import ReactDOM from 'react-dom';
+
 
 export class CoreMenu extends React.Component {
     toCamelCase(str) {
