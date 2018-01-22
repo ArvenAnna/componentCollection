@@ -18,6 +18,8 @@ import Dialogs from './dialogs';
 import Cards from './cards';
 import Notifications from './notifications';
 import Tables from './table';
+import Forms from './forms';
+import Datepickers from './datepickers';
 import MainPage from './MainPage';
 
 import {ThemeProvider} from "styled-components";
@@ -39,6 +41,8 @@ ReactDOM.render(
                   <NavLink to="/cards">Cards</NavLink>
                   <NavLink to="/notifications">Notifications</NavLink>
                   <NavLink to="/tables">Tables</NavLink>
+                  <NavLink to="/forms">Forms</NavLink>
+                  <NavLink to="/datepickers">Datepickers</NavLink>
               </div>
               <div className="content">
                   <Switch>
@@ -53,7 +57,8 @@ ReactDOM.render(
                       <Route path='/cards' component={Cards}/>
                       <Route path='/notifications' component={Notifications}/>
                       <Route path='/tables' component={Tables}/>
-
+                      <Route path='/forms' component={Forms}/>
+                      <Route path='/datepickers' component={Datepickers}/>
                   </Switch>
               </div>
           </div>

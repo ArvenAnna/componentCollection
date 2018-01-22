@@ -34,7 +34,7 @@ export default class CoreForm extends React.Component {
     }
 }
 
-export class FormActions extends React.Component {
+export class CoreFormActions extends React.Component {
     toCamelCase(str) {
         if (!str) {
             return str;

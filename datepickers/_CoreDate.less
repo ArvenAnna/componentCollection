@@ -1,0 +1,313 @@
+:root {
+    --Date-border-radius: var(--border-radius--default);
+    --Date-border-color: var(--border-color--default);
+    --Date-border-style: var(--border-style--default);
+    --Date-border-width: var(--border-width--default);
+
+    --Date-background-color: var(--background-color--default);
+
+    --Date-font-size: var(--font-size--regular);
+    --Date-text-color: var(--text-color--default);
+
+    --Date--hover-border-color: var(--border-color--forState);
+
+    --Date--focus-box-shadow-color: var(--shadow-color--focus);
+    --Date--focus-box-shadow-width: var(--shadow-size--forState);
+
+    --Date--disabled-border-color: var(--border-color--disabled);
+    --Date--disabled-background-color: var(--background-color--disabled);
+    --Date--disabled-text-color: var(--text-color--disabled);
+    --Date--disabled-opacity: var(--opacity--disabled);
+
+    --Date__button-background-color: var(--background-color--transparent);
+    --Date__picker-background-color: var(--background-color--default);
+
+}
+
+.Date {
+    position: relative;
+
+    border: var(--Date-border-width) var(--Date-border-style) var(--Date-border-color);
+    border-radius: var(--Date-border-radius);
+    background-color: var(--Date-background-color);
+    box-sizing: border-box;
+    font-size: var(--Date-font-size);
+    line-height: 1;
+    padding: 0;
+    color: var(--Date-text-color);
+    vertical-align: top;
+}
+
+.Date:hover {
+    border-color: var(--Date--hover-border-color);
+}
+
+.Date--single {
+    width: 8.375rem;
+    min-width: 8.375rem;
+}
+
+.Date--single.has-icon {
+    width: 10.5rem;
+}
+
+.Date--single.has-clear {
+    width: 10.25rem;
+}
+
+.Date--single.has-icon.has-clear {
+    width: 12.875rem;
+}
+
+.Date--range {
+    width: 18.25rem;
+    min-width: 18.25rem;
+}
+
+.Date--range.has-icon {
+    width: 20.375rem;
+}
+
+.Date--range.has-clear {
+    width: 20.125rem;
+}
+
+.Date--range.has-icon.has-clear {
+    width: 22.75rem;
+}
+
+.Date.has-icon .Date__clear {
+    right: 2.5rem;
+}
+
+[dir=rtl] .Date.has-icon .Date__clear {
+    right: auto;
+    left: 2.5rem;
+}
+
+.Date__input {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.Date__arrow {
+    position: relative;
+    display: inline-block;
+    padding: 0.375rem 0.25rem;
+    height: 1.875rem;
+    vertical-align: middle;
+}
+
+.Date__arrow .Icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    fill: var(--Date-text-color);
+}
+
+.Date__button {
+    border: 0;
+    padding: 0.5rem;
+    height: 1.875rem;
+    text-decoration: none;
+    background: var(--Date__button-background-color);
+}
+
+.Date__button:active,
+.Date__button:focus {
+    box-shadow: var(--Date--focus-box-shadow-width) var(--Date--focus-box-shadow-color);
+    outline: 0;
+}
+
+.Date__button[readonly]:active,
+.Date__button[readonly]:focus {
+    box-shadow: none;
+}
+
+.Date__clear,
+.Date__action {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    right: 0;
+}
+
+[dir=rtl] .Date__clear,
+[dir=rtl] .Date__action {
+    right: auto;
+    left: 0;
+}
+
+.Date__clear {
+    width: 1.875rem;
+}
+
+/* stylelint-disable selector-class-pattern */
+.Date__clear .Icon--IconError {
+    width: 0.875rem;
+    height: 0.875rem;
+    //fill: color(var(--Date-text-color) tint(50%));
+    fill: lighten(#323232, 50%);
+}
+/* stylelint-enable selector-class-pattern */
+
+.Date__action .Date__button {
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
+}
+
+/* stylelint-disable selector-class-pattern */
+.Date__action .Icon--IconDate {
+    width: 1.125rem;
+    height: 1.125rem;
+    fill: var(--Date-text-color);
+}
+/* stylelint-enable selector-class-pattern */
+
+.Date__picker {
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    background-color: var(--Date__picker-background-color);
+    z-index: 50;
+}
+
+[dir=rtl] .Date__picker {
+    left: auto;
+    right: 0;
+}
+
+.Date.is-disabled {
+    opacity: var(--Date--disabled-opacity);
+
+    border-color: var(--Date--disabled-border-color);
+    background: var(--Date--disabled-background-color);
+    color: var(--Date--disabled-text-color);
+    cursor: not-allowed;
+    transition: none;
+}
+
+.Date.is-disabled:hover,
+.Date.is-disabled:active,
+.Date.is-disabled:focus {
+    border-color: var(--Date--disabled-border-color);
+    outline: none;
+}
+
+.Date.is-disabled .Date__button,
+.Date.is-disabled .Date__button:active,
+.Date.is-disabled .Date__button:focus {
+    opacity: var(--Date--disabled-opacity);
+
+    border-color: var(--Date--disabled-border-color);
+    background: var(--Date--disabled-background-color);
+    color: var(--Date--disabled-text-color);
+    cursor: not-allowed;
+    transition: none;
+    box-shadow: none;
+}
+
+/**
+Too much CSS to handle placeholder too long when manual input is not allowed
+*/
+.Date.has-placeholder,
+.Date.has-icon.has-placeholder,
+.Date.has-clear.has-placeholder,
+.Date.has-icon.has-clear.has-placeholder {
+    width: auto;
+    display: inline-block;
+}
+
+.Date.has-icon.has-placeholder {
+    padding-right: 2.125rem;
+}
+
+[dir=rtl] .Date.has-icon.has-placeholder {
+    padding-right: 0;
+    padding-left: 2.125rem;
+}
+
+.Date.has-clear.has-placeholder {
+    padding-right: 1.875rem;
+}
+
+[dir=rtl] .Date.has-clear.has-placeholder {
+    padding-right: 0;
+    padding-left: 1.875rem;
+}
+
+.Date.has-icon.has-clear.has-placeholder {
+    padding-right: 4.5rem;
+}
+
+[dir=rtl] .Date.has-icon.has-clear.has-placeholder {
+    padding-right: 0;
+    padding-left: 4.5rem;
+}
+
+.Date.has-placeholder .InputDate__placeholder .Date__button {
+    width: 100%;
+}
+
+/* stylelint-disable swissquote/no-state-without-component */
+.Date.has-placeholder .InputDate__placeholder:not(.is-empty) ~ .InputDate__input,
+.Date.has-placeholder .InputDate__placeholder:not(.is-empty) ~ .InputDate__separator {
+    display: none;
+}
+/* stylelint-enable swissquote/no-state-without-component */
+
+.Date.has-placeholder .InputDate__placeholder.is-empty ~ .InputDate__input,
+.Date.has-placeholder .InputDate__placeholder.is-empty ~ .InputDate__separator {
+    position: absolute;
+    z-index: 10;
+}
+
+.Date.has-placeholder .InputDate__placeholder.is-empty ~ .InputDate__input--day {
+    left: 0;
+}
+
+[dir=rtl] .Date.has-placeholder .InputDate__placeholder.is-empty ~ .InputDate__input--day {
+    left: auto;
+    right: 0;
+}
+
+.Date.has-placeholder .InputDate__placeholder.is-empty ~ .InputDate__separator {
+    left: 2rem;
+}
+
+[dir=rtl] .Date.has-placeholder .InputDate__placeholder.is-empty ~ .InputDate__separator {
+    left: auto;
+    right: 2rem;
+}
+
+.Date.has-placeholder .InputDate__placeholder.is-empty ~ .InputDate__input--month {
+    left: 2.375rem;
+}
+
+[dir=rtl] .Date.has-placeholder .InputDate__placeholder.is-empty ~ .InputDate__input--month {
+    left: auto;
+    right: 2.375rem;
+}
+
+.Date.has-placeholder .InputDate__placeholder.is-empty ~ .InputDate__separator:last-of-type {
+    left: 4.375rem;
+}
+
+[dir=rtl] .Date.has-placeholder .InputDate__placeholder.is-empty ~ .InputDate__separator:last-of-type {
+    left: auto;
+    right: 4.375rem;
+}
+
+.Date.has-placeholder .InputDate__placeholder.is-empty ~ .InputDate__input--year {
+    left: 4.75rem;
+}
+
+[dir=rtl] .Date.has-placeholder .InputDate__placeholder.is-empty ~ .InputDate__input--year {
+    left: auto;
+    right: 4.75rem;
+}
+/**
+*/

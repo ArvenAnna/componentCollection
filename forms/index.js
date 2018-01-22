@@ -6,6 +6,10 @@ import CoreCheckbox from "../switch/CoreCheckbox";
 import CoreSelect from "../switch/CoreSelect";
 import CoreTextarea from "../textFields/CoreTextarea";
 import CoreInput from "../textFields/CoreInput";
+import CoreFormAddon from "./CoreFormAddon";
+import CoreButton from "../buttons/CoreButton";
+import {CoreFormActions} from "./CoreForm";
+import Magnifier from '../svg/magnifier.svg';
 
 class Forms extends React.Component {
 
@@ -30,8 +34,12 @@ class Forms extends React.Component {
                     <CoreFormItem label="Textarea label" errorMessage="Your text is too short" hasError>
                         <CoreTextarea name="textarea-01" placeholder="Textarea placeholder" />
                     </CoreFormItem>
+                    <CoreFormItem label="Input label" errorMessage="Your text is too short" hasError>
+                        <CoreInput placeholder="placeholder and max length" maxLength={4}/>
+                    </CoreFormItem>
                 </CoreForm>
-
+            </div>
+            <div className="element_block" style={{width: '400px'}}>
                 <CoreForm horizontal>
                     <CoreFormItem label="Checkboxes" errorMessage="You must agree to the Terms &amp; Services" hasError>
                         <CoreCheckbox name="agree">I agree to the Terms &amp; Services</CoreCheckbox>
@@ -46,8 +54,44 @@ class Forms extends React.Component {
                     <CoreFormItem label="Textarea label" errorMessage="Your text is too short" hasError>
                         <CoreTextarea name="textarea-01" placeholder="Textarea placeholder" />
                     </CoreFormItem>
-                    <CoreFormItem label="Input)label" errorMessage="Your text is too short" hasError>
+                    <CoreFormItem label="Input label" errorMessage="Your text is too short" hasError>
                         <CoreInput placeholder="placeholder and max length" maxLength={4}/>
+                    </CoreFormItem>
+                </CoreForm>
+            </div>
+
+            <div className="element_block core_margin">
+                <CoreForm action="">
+                <CoreFormItem label="Input label 2" addons={true}>
+                    <CoreFormAddon>$</CoreFormAddon>
+                    <CoreFormAddon>$</CoreFormAddon>
+                    <CoreFormAddon>$</CoreFormAddon>
+                    <CoreInput name="input-06" placeholder="Input placeholder" readOnly={true}/>
+                    <CoreFormAddon>%</CoreFormAddon>
+                    <CoreFormAddon>%</CoreFormAddon>
+                </CoreFormItem>
+                </CoreForm>
+
+                <CoreFormItem icons={true}>
+                    <Magnifier className="Icon"/>
+                    <CoreInput name="input-06" placeholder="Input placeholder" />
+                    <Magnifier className="Icon"/>
+                </CoreFormItem>
+
+                <CoreForm action="">
+                    <CoreFormItem label="Input label" htmlFor="input-01" errorMessage="Some error occurs" hasError={true} >
+                        <CoreInput name="input-01" placeholder="Input placeholder"/>
+                    </CoreFormItem>
+                    <CoreFormActions>
+                        <CoreButton>Send</CoreButton>
+                    </CoreFormActions>
+                </CoreForm>
+
+                <CoreForm action="" horizontal={true}>
+                    <CoreFormItem error="some error occurs" label="Horizontal input" icons={true}>
+                        <Magnifier className="Icon"/>
+                        <CoreInput name="input-06" placeholder="Input placeholder" />
+                        <Magnifier className="Icon"/>
                     </CoreFormItem>
                 </CoreForm>
             </div>

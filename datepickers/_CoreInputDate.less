@@ -1,0 +1,117 @@
+:root {
+    --InputDate-font-size: var(--font-size--regular);
+    --InputDate-text-color: var(--text-color--default);
+
+    --InputDate--active-background-color: var(--background-color--secondary);
+
+    --InputDate--focus-box-shadow-color: var(--shadow-color--focus);
+    --InputDate--focus-box-shadow-width: var(--shadow-size--forState);
+
+    --InputDate--disabled-background-color: var(--background-color--disabled);
+    --InputDate--disabled-text-color: var(--text-color--disabled);
+    --InputDate--disabled-opacity: var(--opacity--disabled);
+
+    --InputDate__input-background-color: var(--background-color--transparent);
+}
+
+.InputDate {
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: var(--InputDate-font-size);
+    line-height: 1;
+    padding: 0;
+    color: var(--InputDate-text-color);
+    vertical-align: top;
+    min-width: 7.75rem;
+}
+
+.InputDate.is-active {
+    background: var(--InputDate--active-background-color);
+}
+
+.InputDate__placeholder {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    border: 0;
+    width: 100%;
+    font-size: inherit;
+    color: var(--InputDate-text-color);
+    line-height: 1;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.InputDate .InputDate__placeholder__content.is-hidden {
+    visibility: hidden;
+}
+
+.InputDate .Button--text:hover {
+    color: var(--InputDate-text-color);
+}
+
+.InputDate__input {
+    box-sizing: border-box;
+    appearance: none;
+    position: relative;
+    display: inline-block;
+    height: 1.875rem;
+    border: 0;
+    background: var(--InputDate__input-background-color);
+    padding: 0.5rem 0.25rem;
+    font-size: inherit;
+    color: inherit;
+    line-height: 1;
+    text-align: center;
+}
+
+.InputDate__input--day,
+.InputDate__input--month {
+    width: 2rem;
+}
+
+.InputDate__input--year {
+    width: 3rem;
+}
+
+.InputDate__input:active,
+.InputDate__input:focus {
+    box-shadow: var(--InputDate--focus-box-shadow-width)
+        var(--InputDate--focus-box-shadow-color);
+    outline: 0;
+}
+
+.InputDate__input[readonly]:active,
+.InputDate__input[readonly]:focus {
+    box-shadow: none;
+}
+
+.InputDate__input[disabled] {
+    opacity: var(--InputDate--disabled-opacity);
+
+    background: var(--InputDate--disabled-background-color);
+    color: var(--InputDate--disabled-text-color);
+    cursor: not-allowed;
+}
+
+.InputDate__input[disabled]:active,
+.InputDate__input[disabled]:focus {
+    box-shadow: none;
+}
+
+.InputDate__input::-ms-clear {
+    height: 0;
+    width: 0;
+}
+
+.InputDate__separator {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    width: 0.375rem;
+    padding: 0.5rem 0;
+    font-size: inherit;
+    color: inherit;
+    line-height: 1;
+}

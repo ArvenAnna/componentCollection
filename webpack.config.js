@@ -13,7 +13,7 @@ module.exports = {
       loader: 'babel-loader',
     }, {
       test: /\.css$/,
-      exclude: [/node_modules/, /bin/],
+      //exclude: [/node_modules/, /bin/],
       loader: "style-loader!css-loader!autoprefixer-loader"
     }, {
       test: /\.less$/,

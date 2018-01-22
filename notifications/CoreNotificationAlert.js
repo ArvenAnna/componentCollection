@@ -1,5 +1,5 @@
 import * as React from "react";
-import './CoreNotificationAlert';
+import './_CoreNotificationAlert.less';
 
 export default class CoreNotificationAlert extends React.Component {
     toCamelCase(str) {
@@ -29,6 +29,6 @@ export default class CoreNotificationAlert extends React.Component {
         const {namespace, className, ...props} = this.props;
 
         return <div
-            className={this.classes("NotificationAlert", "is-active", className)} {...props} />;
+            className={this.classes("NotificationAlert", className)} {...props} />;
     }
 }
