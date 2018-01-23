@@ -6,6 +6,7 @@ import CoreProgress from './CoreProgress';
 import Star from '../svg/core/star.svg';
 import EmptyStar from '../svg/core/star-empty.svg';
 import HalfEmptyStar from '../svg/core/star-half-empty.svg';
+import ReactLoaders from "./reactLoaders";
 
 
 class Indicators extends React.Component {
@@ -43,6 +44,8 @@ class Indicators extends React.Component {
                 <CoreProgress percent={30} level="info">Some text</CoreProgress>
                 <CoreProgress percent={45} level="success">Some text</CoreProgress>
             </div>
+
+            <ReactLoaders/>
         </div>;
     }
 }

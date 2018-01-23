@@ -16,6 +16,10 @@ module.exports = {
       //exclude: [/node_modules/, /bin/],
       loader: "style-loader!css-loader!autoprefixer-loader"
     }, {
+        test: /\.scss$/,
+        //exclude: [/node_modules/, /bin/],
+        loader: "style-loader!css-loader!autoprefixer-loader!sass-loader"
+    }, {
       test: /\.less$/,
       exclude: [/node_modules/, /bin/],
       loader: "style-loader!css-loader!autoprefixer-loader!less-loader"
