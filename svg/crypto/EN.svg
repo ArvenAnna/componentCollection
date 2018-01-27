@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>EN</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="10" cy="10" r="10"></circle>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="EN">
+            <g id="icon-GPB">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Shape" fill="#00247D" fill-rule="nonzero" xlink:href="#path-1"></use>
+                <path d="M-20,-10 L40,30 M40,-10 L-20,30" id="Shape" stroke="#FFFFFF" stroke-width="2.76999998" fill="#000000" fill-rule="nonzero" mask="url(#mask-2)"></path>
+                <path d="M-20,-10 L40,30 M40,-10 L-20,30" id="Shape" stroke="#CF142B" stroke-width="1.46000004" fill="#000000" fill-rule="nonzero" mask="url(#mask-2)"></path>
+                <path d="M10,-10 L10,30 M-20,10 L40,10" id="Shape" stroke="#FFFFFF" stroke-width="5" fill="#000000" fill-rule="nonzero" mask="url(#mask-2)"></path>
+                <path d="M10,-10 L10,30 M-20,10 L40,10" id="Shape" stroke="#CF142B" stroke-width="3" fill="#000000" fill-rule="nonzero" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

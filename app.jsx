@@ -20,6 +20,7 @@ import Notifications from './notifications';
 import Tables from './table';
 import Forms from './forms';
 import Datepickers from './datepickers';
+import Sliders from './sliders';
 import MainPage from './MainPage';
 
 import {ThemeProvider} from "styled-components";
@@ -43,6 +44,7 @@ ReactDOM.render(
                   <NavLink to="/tables">Tables</NavLink>
                   <NavLink to="/forms">Forms</NavLink>
                   <NavLink to="/datepickers">Datepickers</NavLink>
+                  <NavLink to="/sliders">Sliders</NavLink>
               </div>
               <div className="content">
                   <Switch>
@@ -59,6 +61,7 @@ ReactDOM.render(
                       <Route path='/tables' component={Tables}/>
                       <Route path='/forms' component={Forms}/>
                       <Route path='/datepickers' component={Datepickers}/>
+                      <Route path='/sliders' component={Sliders}/>
                   </Switch>
               </div>
           </div>

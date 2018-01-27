@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>JP</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="10" cy="10" r="10"></circle>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="JP">
+            <g id="Shape-Copy-13" fill-rule="nonzero">
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <circle stroke="#DDDFE0" stroke-width="1" cx="10" cy="10" r="9.5"></circle>
+            </g>
+            <path d="M10,5 C12.76125,5 15,7.23875 15,10 C15,12.76125 12.76125,15 10,15 C7.23875,15 5,12.76125 5,10 C5,7.23875 7.23875,5 10,5" id="Fill-2" fill="#DE2910"></path>
+        </g>
+    </g>
+</svg>

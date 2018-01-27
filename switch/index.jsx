@@ -7,8 +7,16 @@ import CoreRadio from "./CoreRadio";
 import CoreRadioGroup from "./CoreRadioGroup";
 import CoreDropdown from "./CoreDropdown";
 import {CoreMenu, CoreMenuDivider, CoreMenuHeader, CoreMenuItem} from "./coreDropdownMenu/CoreMenu";
+import CryptoLangSwitcher from "./CryptoLangSwitcher";
 
 class Switchers extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            lang: 'tr'
+        }
+    }
 
     showSwitchControlApi() {
         // or kind of tooltip triggered onClick
@@ -37,6 +45,11 @@ class Switchers extends React.Component {
                 {/*<CryptoCheckbox checked={true}>checked</CryptoCheckbox>*/}
                 {/*<CryptoCheckbox checked={false}>checked false</CryptoCheckbox>*/}
             </div>
+
+            <div className="element_block crypto_bg"  style={{width: '300px'}}>
+                <CryptoLangSwitcher lang={this.state.lang} onChange={(value) => this.setState({lang: value})}/>
+            </div>
+
             <div className="element_block core_margin" style={{width: '200px'}}>
                 <CoreSelect options={{'1': 'simple', '2': 'selected'}} selectedOptionValue='2' onChange={() => {}} level='info' size='small' />
                 <CoreSelect options={{'1': 'large', '2': 'name2'}} level='warning' size='large' onChange={() => {}}/>
